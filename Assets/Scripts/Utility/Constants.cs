@@ -8,13 +8,25 @@ using UnityEngine;
 public class Constants 
 {
     #region Inputs
-    public static readonly string INPUT_HORIZONTAL = "Horizontal";
-    public static readonly string INPUT_VERTICAL = "Vertical";
-    public static readonly string INPUT_FIRE1 = "Fire1";
-    public static readonly string INPUT_JUMP = "Jump";
-    public static readonly string INPUT_SUBMIT = "Submit";
-    public static readonly string INPUT_CANCEL = "Cancel";
-    public static readonly string INPUT_DEBUGMODE = "Fire3";
+    public static readonly string INPUT_A = "A";
+    public static readonly string INPUT_B = "B";
+    public static readonly string INPUT_X = "X";
+    public static readonly string INPUT_Y = "Y";
+    public static readonly string INPUT_LB = "LB";
+    public static readonly string INPUT_RB = "RB";
+    public static readonly string INPUT_SELECT = "Select";
+    public static readonly string INPUT_START = "Start";
+    public static readonly string INPUT_LEFT_STICK_BUTTON = "LeftStickButton";
+    public static readonly string INPUT_RIGHT_STICK_BUTTON = "RightStickButton";
+    public static readonly string INPUT_LEFT_STICK_X = "LeftStickX";
+    public static readonly string INPUT_LEFT_STICK_Y = "LeftStickY";
+    public static readonly string INPUT_RIGHT_STICK_X = "RightStickX";
+    public static readonly string INPUT_RIGHT_STICK_Y = "RightStickY";
+    public static readonly string INPUT_DPAD_X = "DpadX";
+    public static readonly string INPUT_DPAD_Y = "DpadY";
+    public static readonly string INPUT_LT = "LT";
+    public static readonly string INPUT_RT = "RT";
+    public static readonly string INPUT_DEBUG_MODE = "DebugMode";
     #endregion
 
     #region Tags and Layers

@@ -16,7 +16,7 @@ public class DebugMode : MonoBehaviour
     private void Update ()
     {
         // Switch the Games Debug Mode On/Off
-        if (Input.GetButtonDown(Constants.INPUT_DEBUGMODE))
+        if (Input.GetButtonDown(Constants.INPUT_DEBUG_MODE))
         {
             debugMode = !debugMode;
         }

@@ -67,8 +67,8 @@ public class CharacterController : MonoBehaviour
     {
         if (active)
         {
-            horizontalInput = Input.GetAxis(Constants.INPUT_HORIZONTAL) * movementSpeed;
-            verticalInput = Input.GetAxis(Constants.INPUT_VERTICAL) * movementSpeed;
+            horizontalInput = Input.GetAxis(Constants.INPUT_LEFT_STICK_X) * movementSpeed;
+            verticalInput = Input.GetAxis(Constants.INPUT_LEFT_STICK_Y) * movementSpeed;
         }
     }
     #endregion
