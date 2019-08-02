@@ -13,7 +13,8 @@ public class CharacterController : MonoBehaviour
     #region Variable Declarations
     // Serialized Fields
     [Header("Movement")]
-    [SerializeField] protected float movementSpeed = 10;
+    [SerializeField] protected float movementSpeed = 1f;
+    [SerializeField] protected float acceleration = 10f;
 
     [Header("Properties")]
     [Range(1, 4)]
@@ -99,10 +100,10 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void MoveCharacter()
     {
-        Vector2 newVelocity = rigidbody.velocity;
-        newVelocity.x = horizontalInput;
-        newVelocity.y = verticalInput;
-        rigidbody.velocity = newVelocity;
+        Vector2 targetVelocity = rigidbody.velocity;
+        targetVelocity.x = horizontalInput;
+        targetVelocity.y = verticalInput;
+        rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, acceleration * Time.deltaTime);
     }
     #endregion
 
