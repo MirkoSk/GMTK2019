@@ -28,6 +28,9 @@ public class CharacterController : MonoBehaviour
     protected bool active = true;
     private bool firstMove = true;
 
+    private float stunTime = 0f;
+    private float stunTimer = 0f;
+
     // References
     protected new Rigidbody2D rigidbody;
     protected string currentAxisX;
@@ -65,6 +68,17 @@ public class CharacterController : MonoBehaviour
             horizontalInput = Input.GetAxis(currentAxisX) * movementSpeed;
             verticalInput = Input.GetAxis(currentAxisY) * movementSpeed;
         }
+
+        if (stunTime != 0)
+        {
+            stunTimer += Time.deltaTime;
+            if (stunTimer >= stunTime)
+            {
+                SetMovable(true);
+                stunTime = 0f;
+                stunTimer = 0f;
+            }
+        }
     }
     #endregion
 
@@ -100,6 +114,13 @@ public class CharacterController : MonoBehaviour
         currentAxisY = yAxis;
 
         firstMove = true;
+    }
+
+    public void Stun(float duration, float force, Vector3 direction)
+    {
+        transform.Translate(direction * force);
+        SetMovable(false);
+        stunTime = duration;
     }
     #endregion
 

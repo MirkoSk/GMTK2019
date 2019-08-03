@@ -27,6 +27,10 @@ public class TerminalController : MonoBehaviour
     public Minigame LinkedMinigame = null;
     public Minigame RepairMinigame = null;
 
+    [Space]
+    public float StunDuration = 3f;
+    public float StunForce = 1f;
+
     [Header("Terminal State")]
     [SerializeField] TerminalState terminalState = TerminalState.Idle;
     [SerializeField] bool debug = false;
@@ -174,8 +178,8 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        player.Stun(StunDuration, StunForce, (player.transform.position - terminal.transform.position).normalized);
         triggerController.enabled = true;
-        player.SetMovable(true);
         timerToExplode += timePenalty;
         ChangeState(TerminalState.Error);
     }
@@ -221,8 +225,8 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        player.Stun(StunDuration, StunForce, (player.transform.position - terminal.transform.position).normalized);
         triggerController.enabled = true;
-        player.SetMovable(true);
         ChangeState(TerminalState.Destroyed);
     }
 

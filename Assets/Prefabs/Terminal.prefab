@@ -225,6 +225,8 @@ MonoBehaviour:
   TimeToExplode: 10
   LinkedMinigame: {fileID: 0}
   RepairMinigame: {fileID: 0}
+  StunDuration: 2
+  StunForce: 0.2
   terminalState: 0
   debug: 0
   triggerController: {fileID: 214745742617542117}
