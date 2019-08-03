@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeToFail:
-    minValue: 2.6279593
-    maxValue: 7.539863
+    minValue: 4.6541476
+    maxValue: 9.7287
   TimeToExplode: 10
   TimeToRepair: 10
   Minigame: {fileID: 0}

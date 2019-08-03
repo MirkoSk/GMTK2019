@@ -44,12 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03969053d971bf7448efddfc5f7d07ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terminalPrefabs: []
-  numberOfTerminals: 0
-  miniGamePrefabs: []
+  terminalPrefabs:
+  - {fileID: 3344290510320166441, guid: 398f0805497194648bf3fe759013f915, type: 3}
+  numberOfTerminals: 1
+  miniGamePrefabs:
+  - {fileID: 6235019308841095995, guid: be7735271d7f639499626c8871842c16, type: 3}
   difficultyModifier:
-    minValue: 0.7131878
-    maxValue: 1.2726713
+    minValue: 0.74754274
+    maxValue: 1.2451766
 --- !u!114 &1410734276145436957
 MonoBehaviour:
   m_ObjectHideFlags: 0

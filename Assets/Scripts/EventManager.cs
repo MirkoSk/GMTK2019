@@ -24,7 +24,7 @@ public class EventManager : MonoBehaviour
 
 
     // Private
-    List<TerminalController> terminals;
+    List<TerminalController> terminals = new List<TerminalController>();
     float difficulty = 1f;
     int erroredTerminals = 0;
 	#endregion
@@ -38,14 +38,14 @@ public class EventManager : MonoBehaviour
 	
 	
 	#region Unity Event Functions
-	private void Start () 
+	private void Awake () 
 	{
 		for(int i=0; i < numberOfTerminals; i++)
         {
             int spawnTerminalNumber = Random.Range(0, terminalPrefabs.Count);
             GameObject terminalPrefab = Instantiate(terminalPrefabs[spawnTerminalNumber]);
             TerminalController terminalController = terminalPrefab.GetComponent<TerminalController>();
-            terminalController.Minigame = Instantiate(miniGamePrefabs[Random.Range(0, miniGamePrefabs.Count)]);
+            terminalController.LinkedMinigame = Instantiate(miniGamePrefabs[Random.Range(0, miniGamePrefabs.Count)]);
             terminals.Add(terminalController);
             terminalPrefabs.RemoveAt(spawnTerminalNumber);
         }

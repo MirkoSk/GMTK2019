@@ -22,7 +22,7 @@ public class TerminalController : MonoBehaviour
     public RangedFloat TimeToFail = new RangedFloat();
     public float TimeToExplode = 10f;
     public float TimeToRepair = 10f;
-    public GameObject Minigame = null;
+    public Minigame LinkedMinigame = null;
 
     [Header("Terminal State")]
     [SerializeField] TerminalState terminalState = TerminalState.Idle;
@@ -77,7 +77,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        timerToExplode = 0f;
+        timerToFail = 0f;
         terminalState = TerminalState.Error;
     }
 
@@ -91,6 +91,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        LinkedMinigame.StartMinigame(this, player);
         terminalState = TerminalState.Fixing;
     }
 
@@ -104,7 +105,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        timerToFail = 0f;
+        timerToExplode = 0f;
         terminalState = TerminalState.Idle;
     }
 
