@@ -50,10 +50,10 @@ public class SingleButtonMinigame : Minigame
         base.StartMinigame(terminal, player);
 
         // Get random button to press:
-        string button = inputController.GetUnusedButton();
+        buttonToPress = inputController.GetUnusedButton();
 
         // Display button in UI:
-        buttonIcon.sprite = inputController.GetInputIcon(button);
+        buttonIcon.sprite = inputController.GetInputIcon(buttonToPress);
     }
     #endregion
 

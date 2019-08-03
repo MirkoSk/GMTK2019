@@ -82,7 +82,7 @@ public class InputController : MonoBehaviour
     private void Update()
     {
         // Debug:
-        LogInputs();
+        //LogInputs();
     }
     #endregion
 
