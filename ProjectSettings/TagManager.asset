@@ -39,8 +39,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: StarBackground
     uniqueID: 3673436641
+    locked: 0
+  - name: ShipBackground
+    uniqueID: 1095177675
     locked: 0
   - name: Default
     uniqueID: 0
