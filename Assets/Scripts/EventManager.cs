@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour
 
     [Header("MiniGames")]
     [SerializeField] List<GameObject> miniGamePrefabs;
+    [SerializeField] GameObject repairMinigamePrefab;
 
     [Header("Event Settings")]
     [MinMaxRange(0.5f, 1.5f)]
@@ -42,12 +43,21 @@ public class EventManager : MonoBehaviour
 	{
 		for(int i=0; i < numberOfTerminals; i++)
         {
+            //Spawn Terminal
             int spawnTerminalNumber = Random.Range(0, terminalPrefabs.Count);
             GameObject terminalPrefab = Instantiate(terminalPrefabs[spawnTerminalNumber]);
             TerminalController terminalController = terminalPrefab.GetComponent<TerminalController>();
-            GameObject minigamePrefab = Instantiate(miniGamePrefabs[Random.Range(0, miniGamePrefabs.Count)]);
-            Minigame minigame = minigamePrefab.GetComponent<Minigame>();
-            terminalController.LinkedMinigame = minigame;
+
+            //Spawn Minigame
+            GameObject minigame = Instantiate(miniGamePrefabs[Random.Range(0, miniGamePrefabs.Count)], terminalController.MinigamePosition);
+            Minigame minigameController = minigame.GetComponent<Minigame>();
+
+            //Spawn RepairMinigame
+            GameObject repairMinigame = Instantiate(repairMinigamePrefab, terminalController.MinigamePosition);
+            Minigame repairMinigameController = repairMinigame.GetComponent<Minigame>();
+
+            terminalController.LinkedMinigame = minigameController;
+            terminalController.RepairMinigame = repairMinigameController;
             terminals.Add(terminalController);
             terminalPrefabs.RemoveAt(spawnTerminalNumber);
         }
