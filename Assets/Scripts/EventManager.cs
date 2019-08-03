@@ -23,7 +23,7 @@ public class EventManager : MonoBehaviour
     [Header("Event Settings")]
     [MinMaxRange(0.5f, 1.5f)]
     [SerializeField] RangedFloat difficultyModifier;
-    [SerializeField] float tickInterval = .5f;
+    [SerializeField] float tickInterval = .3f;
 
     [Header("General")]
     [SerializeField] InputController inputController;
