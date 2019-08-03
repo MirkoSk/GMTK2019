@@ -15,6 +15,10 @@ public class CharacterController : MonoBehaviour
     [SerializeField] protected float movementSpeed = 1f;
     [SerializeField] protected float acceleration = 10f;
     [SerializeField] protected float deceleration = 10f;
+    [SerializeField] protected float rotateSpeed = 10f;
+
+    [Header("References")]
+    [SerializeField] Transform playerSprite = null;
     
     // Private Variables
     // Movement
@@ -24,8 +28,8 @@ public class CharacterController : MonoBehaviour
 
     // References
     protected new Rigidbody2D rigidbody;
-    [SerializeField] protected string currentAxisX;
-    [SerializeField] protected string currentAxisY;
+    protected string currentAxisX;
+    protected string currentAxisY;
     #endregion
 
 
@@ -47,6 +51,7 @@ public class CharacterController : MonoBehaviour
         if (active)
         {
             MoveCharacter();
+            RotateCharacter();
         }
     }
 
@@ -105,6 +110,11 @@ public class CharacterController : MonoBehaviour
             rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, acceleration * Time.deltaTime);
         else
             rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, deceleration * Time.deltaTime);
+    }
+
+    private void RotateCharacter()
+    {
+        playerSprite.rotation = Quaternion.LookRotation(Vector3.forward, rigidbody.velocity);
     }
     #endregion
 

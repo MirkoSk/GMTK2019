@@ -394,8 +394,8 @@ MonoBehaviour:
   movementSpeed: 1.4
   acceleration: 7
   deceleration: 10
-  currentAxisX: 
-  currentAxisY: 
+  rotateSpeed: 10
+  playerSprite: {fileID: 4856981780213479374}
 --- !u!50 &5601704338082067762
 Rigidbody2D:
   serializedVersion: 4
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 67d64116b309f62468e93c839b8c3e08, type: 2}
+  gameEvent: {fileID: 0}
   response:
     m_PersistentCalls:
       m_Calls: []

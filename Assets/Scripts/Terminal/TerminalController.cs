@@ -23,7 +23,6 @@ public class TerminalController : MonoBehaviour
     [MinMaxRange(1f, 60f)]
     public RangedFloat TimeToFail = new RangedFloat();
     public float TimeToExplode = 10f;
-    public float TimeToRepair = 10f;
     public Minigame LinkedMinigame = null;
     public Minigame RepairMinigame = null;
 

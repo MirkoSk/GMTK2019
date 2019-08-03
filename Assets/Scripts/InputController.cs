@@ -276,6 +276,10 @@ public class InputController : MonoBehaviour
             return spriteRightStick;
         else if (input == Constants.INPUT_DPAD_X || input == Constants.INPUT_DPAD_Y)
             return spriteDpad;
+        else if (input == Constants.INPUT_LT)
+            return spriteLT;
+        else if (input == Constants.INPUT_RT)
+            return spriteRT;
         else
             return null;
     }
