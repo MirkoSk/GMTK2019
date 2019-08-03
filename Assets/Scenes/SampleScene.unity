@@ -772,21 +772,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputController
       objectReference: {fileID: 0}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 4495733201041842754}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1584549284}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player3
-      value: 
-      objectReference: {fileID: 1689104215}
     - target: {fileID: 1155599429272378874, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -842,6 +827,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 4495733201041842754}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1584549284}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player3
+      value: 
+      objectReference: {fileID: 1689104215}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f59faf1ebec84a4e9a2b26e112787e6, type: 3}
 --- !u!4 &717192919 stripped
@@ -2226,7 +2226,7 @@ Animator:
   m_GameObject: {fileID: 1694355166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5d8c887ebf95ace48997028e068ff9d2, type: 2}
+  m_Controller: {fileID: 9100000, guid: c5616135a13070c46a73bb8d5c740733, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2412,7 +2412,7 @@ Animator:
   m_GameObject: {fileID: 1844138565}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5d8c887ebf95ace48997028e068ff9d2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5f2943c600fe74b469830d25746e2d76, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
