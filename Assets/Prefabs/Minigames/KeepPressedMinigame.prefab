@@ -376,4 +376,5 @@ MonoBehaviour:
     type: 2}
   buttonIcon: {fileID: 8466949875449320842}
   progressBar: {fileID: 3753011417175487528}
+  failWhenButtonReleased: 1
   targetHoldTime: 5

@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 1194067358933896169}
   - component: {fileID: 5601704338082067762}
   - component: {fileID: 1826718226725942733}
+  - component: {fileID: 2978260906426954533}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -177,7 +178,8 @@ MonoBehaviour:
   movementSpeed: 1.4
   acceleration: 7
   deceleration: 10
-  playerNumber: 0
+  currentAxisX: 
+  currentAxisY: 
 --- !u!50 &5601704338082067762
 Rigidbody2D:
   serializedVersion: 4
@@ -296,6 +298,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2978260906426954533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022534536025519593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c468b747c229e0f4da8ec4c0aa38ab21, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods:
+  - component: {fileID: 1194067358933896169}
+    methodID: 1
+    methodName: SetInputAxes
+    chosenID: 1
+    methodNames: []
+    gameObject: {fileID: 7022534536025519593}
+  ignoreEventParameters: 0
 --- !u!1 &8698040236393857854
 GameObject:
   m_ObjectHideFlags: 0

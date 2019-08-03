@@ -12,7 +12,8 @@ public class TerminalController : MonoBehaviour
         Idle,
         Error,
         Fixing,
-        Destroyed
+        Destroyed,
+        Repairing
     }
 
     #region Variable Declarations
@@ -91,9 +92,31 @@ public class TerminalController : MonoBehaviour
         trigger.enabled = true;
         timerToFail = 0f;
         terminalState = TerminalState.Error;
+    }    
+
+    public void StartFixingOrRepairing (TerminalController terminal, CharacterController player)
+    {
+        if (terminal == this && terminalState == TerminalState.Error) StartFixing(terminal, player);
+        else if (terminal == this && terminalState == TerminalState.Destroyed) StartRepairing(terminal, player);
     }
 
-    public void StartFixing(TerminalController terminal, CharacterController player)
+    public void FixOrRepair(TerminalController terminal, CharacterController player, int points)
+    {
+        if (terminal == this && terminalState == TerminalState.Fixing) FixTerminal(terminal, player, points);
+        else if (terminal == this && terminalState == TerminalState.Repairing) Repair(terminal, player, points);
+    }
+
+    public void FailFixOrRepair(TerminalController terminal, CharacterController player, float timePenalty)
+    {
+        if (terminal == this && terminalState == TerminalState.Fixing) FailFixing(terminal, player, timePenalty);
+        else if (terminal == this && terminalState == TerminalState.Repairing) FailRepairing(terminal, player, timePenalty);
+    }
+    #endregion
+
+
+
+    #region Private Functions
+    private void StartFixing(TerminalController terminal, CharacterController player)
     {
         if (terminal != this) return;
 
@@ -104,11 +127,12 @@ public class TerminalController : MonoBehaviour
         }
 
         trigger.enabled = false;
+        player.SetMovable(false);
         LinkedMinigame.StartMinigame(this, player);
         terminalState = TerminalState.Fixing;
     }
 
-    public void FixTerminal(TerminalController terminal, CharacterController player, int points)
+    private void FixTerminal(TerminalController terminal, CharacterController player, int points)
     {
         if (terminal != this) return;
 
@@ -118,11 +142,12 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        player.SetMovable(true);
         timerToExplode = 0f;
         terminalState = TerminalState.Idle;
     }
 
-    public void FailFixing(TerminalController terminal, CharacterController player, float timePenalty)
+    private void FailFixing(TerminalController terminal, CharacterController player, float timePenalty)
     {
         if (terminal != this) return;
 
@@ -133,35 +158,56 @@ public class TerminalController : MonoBehaviour
         }
 
         trigger.enabled = true;
+        player.SetMovable(true);
         timerToExplode += timePenalty;
         terminalState = TerminalState.Destroyed;
     }
 
-    public void Repair(TerminalController terminal, CharacterController player)
+    private void StartRepairing(TerminalController terminal, CharacterController player)
     {
         if (terminal != this) return;
 
         if (terminalState != TerminalState.Destroyed)
         {
+            Debug.LogError("Tried to start repairing Terminal in wrong state: " + terminalState + "State.", gameObject);
+            return;
+        }
+
+        trigger.enabled = false;
+        player.SetMovable(false);
+        RepairMinigame.StartMinigame(this, player);
+        terminalState = TerminalState.Repairing;
+    }
+
+    private void Repair(TerminalController terminal, CharacterController player, int points)
+    {
+        if (terminal != this) return;
+
+        if (terminalState != TerminalState.Repairing)
+        {
             Debug.LogError("Tried to repair Terminal in wrong state: " + terminalState + "State.", gameObject);
             return;
         }
 
-        RepairMinigame.StartMinigame(this, player);
+        trigger.enabled = true;
+        player.SetMovable(true);
+        timerToExplode = 0f;
         terminalState = TerminalState.Idle;
     }
 
-    public void FixOrRepair (TerminalController terminal, CharacterController player)
+    private void FailRepairing(TerminalController terminal, CharacterController player, float timePenalty)
     {
-        if (terminal == this && terminalState == TerminalState.Error) StartFixing(terminal, player);
-        else if (terminal == this && terminalState == TerminalState.Destroyed) Repair(terminal, player);
+        if (terminal != this) return;
+
+        if (terminalState != TerminalState.Repairing)
+        {
+            Debug.LogError("Tried to repair Terminal in wrong state: " + terminalState + "State.", gameObject);
+            return;
+        }
+
+        player.SetMovable(true);
+        terminalState = TerminalState.Destroyed;
     }
-    #endregion
-
-
-
-    #region Private Functions
-
     #endregion
 
 

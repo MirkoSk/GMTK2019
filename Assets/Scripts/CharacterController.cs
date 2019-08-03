@@ -76,6 +76,7 @@ public class CharacterController : MonoBehaviour
         {
             horizontalInput = 0;
             verticalInput = 0;
+            rigidbody.velocity = Vector2.zero;
         }
     }
 
