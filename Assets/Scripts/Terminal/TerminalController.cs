@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 
 /// </summary>
+[SelectionBase]
 public class TerminalController : MonoBehaviour 
 {
     public enum TerminalState
@@ -19,7 +20,7 @@ public class TerminalController : MonoBehaviour
     #region Variable Declarations
     // Serialized Fields
     [Header("Terminal Stats")]
-    [MinMaxRange(0.1f, 40f)]
+    [MinMaxRange(1f, 60f)]
     public RangedFloat TimeToFail = new RangedFloat();
     public float TimeToExplode = 10f;
     public float TimeToRepair = 10f;
@@ -28,9 +29,10 @@ public class TerminalController : MonoBehaviour
 
     [Header("Terminal State")]
     [SerializeField] TerminalState terminalState = TerminalState.Idle;
+    [SerializeField] bool debug = false;
 
     [Header("References")]
-    [SerializeField] Collider2D trigger = null;
+    [SerializeField] TerminalTriggerController triggerController = null;
     [SerializeField] Transform minigamePosition = null;
     [SerializeField] TerminalUi terminalUi = null;
 
@@ -61,7 +63,8 @@ public class TerminalController : MonoBehaviour
             case TerminalState.Error:
                 if (timerToExplode >= TimeToExplode)
                 {
-                    terminalState = TerminalState.Destroyed;
+                    timerToExplode = 0f;
+                    ChangeState(TerminalState.Destroyed);
                 }
 
                 timerToExplode += Time.deltaTime;
@@ -71,6 +74,9 @@ public class TerminalController : MonoBehaviour
                 break;
 
             case TerminalState.Destroyed:
+                break;
+
+            case TerminalState.Repairing:
                 break;
 
             default:
@@ -90,7 +96,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        trigger.enabled = true;
+        triggerController.enabled = true;
         timerToFail = 0f;
         ChangeState(TerminalState.Error);
     }    
@@ -127,7 +133,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        trigger.enabled = false;
+        triggerController.enabled = false;
         player.SetMovable(false);
         LinkedMinigame.StartMinigame(this, player);
         ChangeState(TerminalState.Fixing);
@@ -158,10 +164,10 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        trigger.enabled = true;
+        triggerController.enabled = true;
         player.SetMovable(true);
         timerToExplode += timePenalty;
-        ChangeState(TerminalState.Destroyed);
+        ChangeState(TerminalState.Error);
     }
 
     private void StartRepairing(TerminalController terminal, CharacterController player)
@@ -174,7 +180,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        trigger.enabled = false;
+        triggerController.enabled = false;
         player.SetMovable(false);
         RepairMinigame.StartMinigame(this, player);
         ChangeState(TerminalState.Repairing);
@@ -190,7 +196,6 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
-        trigger.enabled = true;
         player.SetMovable(true);
         timerToExplode = 0f;
         ChangeState(TerminalState.Idle);
@@ -206,12 +211,14 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        triggerController.enabled = true;
         player.SetMovable(true);
         ChangeState(TerminalState.Destroyed);
     }
 
     private void ChangeState(TerminalState state)
     {
+        if (debug) Debug.Log("Changing State to " + state, gameObject);
         terminalUi.OnStateChanged(state);
         terminalState = state;
     }

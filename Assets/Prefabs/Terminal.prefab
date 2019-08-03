@@ -81,14 +81,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeToFail:
-    minValue: 4.6541476
-    maxValue: 9.7287
+    minValue: 7.712463
+    maxValue: 29.098032
   TimeToExplode: 10
   TimeToRepair: 10
   LinkedMinigame: {fileID: 0}
   RepairMinigame: {fileID: 0}
   terminalState: 0
-  trigger: {fileID: 729431341297777945}
+  debug: 0
+  triggerController: {fileID: 214745742617542117}
   minigamePosition: {fileID: 8210317054302111851}
   terminalUi: {fileID: 603635831997472038}
 --- !u!114 &6725877670284000509
