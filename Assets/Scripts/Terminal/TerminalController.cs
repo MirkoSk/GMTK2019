@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 /// <summary>
 /// 
@@ -38,8 +39,12 @@ public class TerminalController : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioClip errorSound;
     [SerializeField] private AudioClip fixSound;
+    [SerializeField] private AudioClip failSound;
     [SerializeField] private AudioClip destroySound;
     [SerializeField] private AudioClip repairSound;
+
+    [Header("Particle Effects")]
+    [SerializeField] private ParticleSystem explosionEffect;
 
     // Private
     private float timerToFail = 0f;
@@ -228,6 +233,13 @@ public class TerminalController : MonoBehaviour
         TerminalState previousState = terminalState;
         terminalState = state;
 
+        // Explosion particle effect:
+        if(state == TerminalState.Destroyed && previousState != TerminalState.Destroyed && previousState != TerminalState.Repairing)
+        {
+            explosionEffect.Play();
+            Invoke("StopExplosion", 1f);
+        }
+
         // Play sounds:
         switch (state)
         {
@@ -241,9 +253,17 @@ public class TerminalController : MonoBehaviour
                 SoundManager.PlaySound(errorSound);
                 break;
             case TerminalState.Destroyed:
-                SoundManager.PlaySound(destroySound);
+                if (previousState == TerminalState.Repairing)
+                    SoundManager.PlaySound(failSound);
+                else
+                    SoundManager.PlaySound(destroySound);
                 break;
         }
+    }
+
+    private void StopExplosion()
+    {
+        explosionEffect.Stop();
     }
     #endregion
 
