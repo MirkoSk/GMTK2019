@@ -23,7 +23,10 @@ public class EventManager : MonoBehaviour
     [Header("Event Settings")]
     [MinMaxRange(0.5f, 1.5f)]
     [SerializeField] RangedFloat difficultyModifier;
-    [SerializeField] float tickInterval = .2f;
+    [SerializeField] float tickInterval = .5f;
+
+    [Header("General")]
+    [SerializeField] InputController inputController;
 
     // Private
     List<TerminalController> terminals = new List<TerminalController>();
@@ -91,14 +94,21 @@ public class EventManager : MonoBehaviour
         {
             if (terminals[i].TimerToFail >= terminals[i].TimeToFail.minValue)
             {
-                float probability = terminals[i].TimerToFail.Remap(terminals[i].TimeToFail.minValue, terminals[i].TimeToFail.maxValue, 0f, 100f);
+                float probability;
+                if (terminals[i].TimerToFail > terminals[i].TimeToFail.maxValue)
+                    probability = 100f;
+                else
+                    probability = terminals[i].TimerToFail.Remap(terminals[i].TimeToFail.minValue, terminals[i].TimeToFail.maxValue, 0f, 100f);
                 float temp = Random.Range(0f, 100f) * difficulty;
 
-
-                if (temp < probability)
+                //TODO: If Probability is 100 and difficulty > 1 this probability >= 100 statement is meant for fail savety NOT FINAL
+                if (probability >= 100 || temp < probability)
                 {
-                    terminals[i].InvokeError();
-                    erroredTerminals++;
+                    if (inputController.CheckUnusedInputs(terminals[i].LinkedMinigame.InputType, terminals[i].LinkedMinigame.InputNumber))
+                    {
+                        terminals[i].InvokeError();
+                        erroredTerminals++;
+                    }
                 }
             }
         }
