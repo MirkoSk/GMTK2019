@@ -117,6 +117,12 @@ public class InputController : MonoBehaviour
             result.Add(GetUnusedTrigger());
         return result.ToArray();
     }
+
+    public void ReleaseInputs(string[] inputs)
+    {
+        foreach (string s in inputs)
+            inputUsed[s] = false;
+    }
     #endregion
 
 
