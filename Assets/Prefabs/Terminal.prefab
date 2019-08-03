@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2958737903819427099}
   - component: {fileID: 1505194646407690319}
+  - component: {fileID: 6725877670284000509}
   - component: {fileID: 8668597170892665993}
   - component: {fileID: 1289423247473622651}
   m_Layer: 0
@@ -90,6 +91,32 @@ MonoBehaviour:
   trigger: {fileID: 729431341297777945}
   minigamePosition: {fileID: 8210317054302111851}
   terminalUi: {fileID: 603635831997472038}
+--- !u!114 &6725877670284000509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344290510320166441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3386b7e17e1f11b4c8b3c96c4d9f47cf, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods:
+  - component: {fileID: 1505194646407690319}
+    methodID: 4
+    methodName: StartFixingOrRepairing
+    chosenID: 1
+    methodNames: []
+    gameObject: {fileID: 3344290510320166441}
+  ignoreEventParameters: 0
 --- !u!114 &8668597170892665993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77ecda2eb492b641877831fd4fd7f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAccessedTerminal: {fileID: 0}
+  terminalAccessed: {fileID: 11400000, guid: 3386b7e17e1f11b4c8b3c96c4d9f47cf, type: 2}
   terminalController: {fileID: 1505194646407690319}
 --- !u!58 &729431341297777945
 CircleCollider2D:

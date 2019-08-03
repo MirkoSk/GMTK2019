@@ -10,7 +10,7 @@ public class TerminalTriggerController : MonoBehaviour
 
     #region Variable Declarations
     // Serialized Fields
-    [SerializeField] GameEvent playerAccessedTerminal = null;
+    [SerializeField] GameEvent terminalAccessed = null;
     [SerializeField] TerminalController terminalController = null;
 
 	// Private
@@ -35,7 +35,7 @@ public class TerminalTriggerController : MonoBehaviour
     {
         if (collider.tag.Contains(Constants.TAG_PLAYER))
         {
-            RaisePlayerAccessedTerminal(terminalController, collider.transform.GetComponentInParent<CharacterController>());
+            RaiseTerminalAccessed(terminalController, collider.transform.GetComponentInParent<CharacterController>());
         }
     }
     #endregion
@@ -49,9 +49,9 @@ public class TerminalTriggerController : MonoBehaviour
 
 
     #region Private Functions
-    void RaisePlayerAccessedTerminal(TerminalController terminal, CharacterController player)
+    void RaiseTerminalAccessed(TerminalController terminal, CharacterController player)
     {
-        playerAccessedTerminal.Raise(this, terminal, player);
+        terminalAccessed.Raise(this, terminal, player);
     }
     #endregion
 
