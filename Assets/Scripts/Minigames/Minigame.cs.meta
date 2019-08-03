@@ -3,7 +3,14 @@ guid: f7c075b46da11d9439f68f90f602b874
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - minigameUi: {instanceID: 0}
+  - minigameSucceededEvent: {fileID: 11400000, guid: 1fdecc8d2b888214dbd7547c646b480f,
+      type: 2}
+  - minigameFailedEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056,
+      type: 2}
+  - successSound: {fileID: 8300000, guid: f45e866bd01195b46a67f9582c17b001, type: 3}
+  - failSound: {fileID: 8300000, guid: 429bbe0d7b4aad848857b4d6a7d8e304, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

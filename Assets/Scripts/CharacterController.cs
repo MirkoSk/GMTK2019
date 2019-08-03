@@ -19,12 +19,14 @@ public class CharacterController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Transform playerSprite = null;
+    [SerializeField] PlayerUi playerUi = null;
     
     // Private Variables
     // Movement
     protected float horizontalInput;
     protected float verticalInput;
     protected bool active = true;
+    private bool firstMove = true;
 
     // References
     protected new Rigidbody2D rigidbody;
@@ -91,6 +93,8 @@ public class CharacterController : MonoBehaviour
 
         currentAxisX = xAxis;
         currentAxisY = yAxis;
+
+        firstMove = true;
     }
     #endregion
 
@@ -105,6 +109,12 @@ public class CharacterController : MonoBehaviour
         Vector2 targetVelocity = rigidbody.velocity;
         targetVelocity.x = horizontalInput;
         targetVelocity.y = verticalInput;
+
+        if(firstMove && targetVelocity.magnitude >= 0.2f)
+        {
+            firstMove = false;
+            playerUi.MarkPlayerMove();
+        }
 
         if (targetVelocity.magnitude >= rigidbody.velocity.magnitude)
             rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, acceleration * Time.deltaTime);

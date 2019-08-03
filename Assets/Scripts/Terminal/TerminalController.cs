@@ -35,6 +35,12 @@ public class TerminalController : MonoBehaviour
     [SerializeField] Transform minigamePosition = null;
     [SerializeField] TerminalUi terminalUi = null;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip errorSound;
+    [SerializeField] private AudioClip fixSound;
+    [SerializeField] private AudioClip destroySound;
+    [SerializeField] private AudioClip repairSound;
+
     // Private
     private float timerToFail = 0f;
     private float timerToExplode = 0f;
@@ -219,7 +225,25 @@ public class TerminalController : MonoBehaviour
     {
         if (debug) Debug.Log("Changing State to " + state, gameObject);
         terminalUi.OnStateChanged(state);
+        TerminalState previousState = terminalState;
         terminalState = state;
+
+        // Play sounds:
+        switch (state)
+        {
+            case TerminalState.Idle:
+                if (previousState == TerminalState.Fixing)
+                    SoundManager.PlaySound(fixSound);
+                if (previousState == TerminalState.Repairing)
+                    SoundManager.PlaySound(repairSound);
+                break;
+            case TerminalState.Error:
+                SoundManager.PlaySound(errorSound);
+                break;
+            case TerminalState.Destroyed:
+                SoundManager.PlaySound(destroySound);
+                break;
+        }
     }
     #endregion
 

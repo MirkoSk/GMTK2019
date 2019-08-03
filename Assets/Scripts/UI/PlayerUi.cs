@@ -17,21 +17,26 @@ public class PlayerUi : MonoBehaviour
     private Image axisImage;
     // Private
     private CharacterController player;
-	#endregion
-	
-	
-	
-	#region Public Properties
-	
-	#endregion
-	
-	
-	
-	#region Unity Event Functions
-	private void Awake () 
+    private float canvasDisplayDuration = 5f;
+    private bool canvasChangeAllowed = false;
+    private bool movedAfterAxisChange = false;
+    private bool iconSizeChanged = false;
+    #endregion
+
+
+
+    #region Public Properties
+
+    #endregion
+
+
+
+    #region Unity Event Functions
+    private void Awake () 
 	{
-        HideCanvas();
+        playerCanvas.enabled = false;
         player = GetComponentInParent<CharacterController>();
+        InvokeRepeating("ToggleIconSize", 0.3f, 0.3f);
 	}
 	#endregion
 	
@@ -49,24 +54,40 @@ public class PlayerUi : MonoBehaviour
         // Show new axis for certain number of seconds:
         axisImage.sprite = axisSprite;
         playerCanvas.enabled = true;
-        CancelInvoke("HideCanvas");
-        Invoke("HideCanvas", 5f);
+        CancelInvoke("AllowCanvasHide");
+        Invoke("AllowCanvasHide", canvasDisplayDuration);
+    }
+
+    public void MarkPlayerMove()
+    {
+        movedAfterAxisChange = true;
+        if (canvasChangeAllowed)
+            playerCanvas.enabled = false;
     }
 	#endregion
 	
 	
 	
 	#region Private Functions
-    private void HideCanvas()
+    private void AllowCanvasHide()
     {
-        playerCanvas.enabled = false;
+        canvasChangeAllowed = true;
+        if (movedAfterAxisChange)
+            playerCanvas.enabled = false;
     }
-	#endregion
-	
-	
-	
-	#region Coroutines
-	
-	#endregion
+
+    private void ToggleIconSize()
+    {
+        Vector2 newSize = iconSizeChanged ? new Vector2(0.8f, 0.8f) : new Vector2(0.6f, 0.6f);
+        iconSizeChanged = !iconSizeChanged;
+        axisImage.rectTransform.localScale = newSize;
+    }
+    #endregion
+
+
+
+    #region Coroutines
+
+    #endregion
 }
 

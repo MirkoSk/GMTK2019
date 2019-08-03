@@ -226,6 +226,8 @@ MonoBehaviour:
     type: 2}
   minigameFailedEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056,
     type: 2}
+  successSound: {fileID: 0}
+  failSound: {fileID: 0}
   targetPresses: 20
   timeLimit: 10
   buttonIcon: {fileID: 8466949875449320842}

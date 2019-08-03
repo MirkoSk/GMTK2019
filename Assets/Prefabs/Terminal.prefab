@@ -84,7 +84,6 @@ MonoBehaviour:
     minValue: 7.712463
     maxValue: 29.098032
   TimeToExplode: 10
-  TimeToRepair: 10
   LinkedMinigame: {fileID: 0}
   RepairMinigame: {fileID: 0}
   terminalState: 0
@@ -92,6 +91,10 @@ MonoBehaviour:
   triggerController: {fileID: 214745742617542117}
   minigamePosition: {fileID: 8210317054302111851}
   terminalUi: {fileID: 603635831997472038}
+  errorSound: {fileID: 8300000, guid: 82eb7d917d10acc4da500b1d1e9e7557, type: 3}
+  fixSound: {fileID: 8300000, guid: 568b61aac5c10014082095c54b22f307, type: 3}
+  destroySound: {fileID: 8300000, guid: 3657d6e82d96e3e45a925e81453abf23, type: 3}
+  repairSound: {fileID: 8300000, guid: 568b61aac5c10014082095c54b22f307, type: 3}
 --- !u!114 &6725877670284000509
 MonoBehaviour:
   m_ObjectHideFlags: 0

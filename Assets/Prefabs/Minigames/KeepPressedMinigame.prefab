@@ -376,6 +376,8 @@ MonoBehaviour:
     type: 2}
   minigameFailedEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056,
     type: 2}
+  successSound: {fileID: 0}
+  failSound: {fileID: 0}
   buttonIcon: {fileID: 8466949875449320842}
   progressBar: {fileID: 3753011417175487528}
   failWhenButtonReleased: 1
