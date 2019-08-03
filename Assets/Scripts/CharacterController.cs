@@ -6,7 +6,6 @@ using UnityEngine;
 /// 
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(AudioSource))]
 public class CharacterController : MonoBehaviour 
 {
 
@@ -29,7 +28,6 @@ public class CharacterController : MonoBehaviour
 
     // Component References
     protected new Rigidbody2D rigidbody;
-    protected AudioSource audioSource;
     #endregion
 
 
@@ -52,7 +50,6 @@ public class CharacterController : MonoBehaviour
     protected virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void FixedUpdate()
