@@ -32,6 +32,7 @@ public class TerminalController : MonoBehaviour
     [Header("References")]
     [SerializeField] Collider2D trigger = null;
     [SerializeField] Transform minigamePosition = null;
+    [SerializeField] TerminalUi terminalUi = null;
 
     // Private
     private float timerToFail = 0f;
@@ -91,7 +92,7 @@ public class TerminalController : MonoBehaviour
 
         trigger.enabled = true;
         timerToFail = 0f;
-        terminalState = TerminalState.Error;
+        ChangeState(TerminalState.Error);
     }    
 
     public void StartFixingOrRepairing (TerminalController terminal, CharacterController player)
@@ -129,7 +130,7 @@ public class TerminalController : MonoBehaviour
         trigger.enabled = false;
         player.SetMovable(false);
         LinkedMinigame.StartMinigame(this, player);
-        terminalState = TerminalState.Fixing;
+        ChangeState(TerminalState.Fixing);
     }
 
     private void FixTerminal(TerminalController terminal, CharacterController player, int points)
@@ -144,7 +145,7 @@ public class TerminalController : MonoBehaviour
 
         player.SetMovable(true);
         timerToExplode = 0f;
-        terminalState = TerminalState.Idle;
+        ChangeState(TerminalState.Idle);
     }
 
     private void FailFixing(TerminalController terminal, CharacterController player, float timePenalty)
@@ -160,7 +161,7 @@ public class TerminalController : MonoBehaviour
         trigger.enabled = true;
         player.SetMovable(true);
         timerToExplode += timePenalty;
-        terminalState = TerminalState.Destroyed;
+        ChangeState(TerminalState.Destroyed);
     }
 
     private void StartRepairing(TerminalController terminal, CharacterController player)
@@ -176,7 +177,7 @@ public class TerminalController : MonoBehaviour
         trigger.enabled = false;
         player.SetMovable(false);
         RepairMinigame.StartMinigame(this, player);
-        terminalState = TerminalState.Repairing;
+        ChangeState(TerminalState.Repairing);
     }
 
     private void Repair(TerminalController terminal, CharacterController player, int points)
@@ -192,7 +193,7 @@ public class TerminalController : MonoBehaviour
         trigger.enabled = true;
         player.SetMovable(true);
         timerToExplode = 0f;
-        terminalState = TerminalState.Idle;
+        ChangeState(TerminalState.Idle);
     }
 
     private void FailRepairing(TerminalController terminal, CharacterController player, float timePenalty)
@@ -206,7 +207,13 @@ public class TerminalController : MonoBehaviour
         }
 
         player.SetMovable(true);
-        terminalState = TerminalState.Destroyed;
+        ChangeState(TerminalState.Destroyed);
+    }
+
+    private void ChangeState(TerminalState state)
+    {
+        terminalUi.OnStateChanged(state);
+        terminalState = state;
     }
     #endregion
 

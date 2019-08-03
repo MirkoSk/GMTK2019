@@ -90,6 +90,7 @@ MonoBehaviour:
   terminalState: 0
   trigger: {fileID: 729431341297777945}
   minigamePosition: {fileID: 8210317054302111851}
+  terminalUi: {fileID: 603635831997472038}
 --- !u!114 &576123305617303452
 MonoBehaviour:
   m_ObjectHideFlags: 0
