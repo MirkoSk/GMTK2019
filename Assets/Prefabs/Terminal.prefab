@@ -40,6 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2958737903819427099}
   - component: {fileID: 1505194646407690319}
+  - component: {fileID: 576123305617303452}
+  - component: {fileID: 8668597170892665993}
+  - component: {fileID: 1289423247473622651}
   m_Layer: 0
   m_Name: Terminal
   m_TagString: Untagged
@@ -76,12 +79,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81faf97ee60396b4a9795bd43b897e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFail:
-    minValue: 0
-    maxValue: 0
-  timeToExplode: 10
-  timeToRepair: 10
-  minigame: {fileID: 0}
+  TimeToFail:
+    minValue: 2.6279593
+    maxValue: 7.539863
+  TimeToExplode: 10
+  TimeToRepair: 10
+  Minigame: {fileID: 0}
+  terminalState: 0
+--- !u!114 &576123305617303452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344290510320166441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 67d64116b309f62468e93c839b8c3e08, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods:
+  - component: {fileID: 1505194646407690319}
+    methodID: 3
+    methodName: StartFixing
+    chosenID: 1
+    methodNames: []
+    gameObject: {fileID: 3344290510320166441}
+  ignoreEventParameters: 0
+--- !u!114 &8668597170892665993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344290510320166441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1fdecc8d2b888214dbd7547c646b480f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods:
+  - component: {fileID: 1505194646407690319}
+    methodID: 4
+    methodName: FixTerminal
+    chosenID: 1
+    methodNames: []
+    gameObject: {fileID: 3344290510320166441}
+  ignoreEventParameters: 0
+--- !u!114 &1289423247473622651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344290510320166441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods:
+  - component: {fileID: 1505194646407690319}
+    methodID: 5
+    methodName: FailFixing
+    chosenID: 1
+    methodNames: []
+    gameObject: {fileID: 3344290510320166441}
+  ignoreEventParameters: 0
 --- !u!1 &4599000550858187091
 GameObject:
   m_ObjectHideFlags: 0
