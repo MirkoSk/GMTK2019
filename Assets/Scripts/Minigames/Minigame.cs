@@ -42,6 +42,11 @@ public abstract class Minigame : MonoBehaviour
     {
         get { return inputType; }
     }
+
+    public int InputNumber
+    {
+        get { return inputNumber; }
+    }
 	#endregion
 	
 	
