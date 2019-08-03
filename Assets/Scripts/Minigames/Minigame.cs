@@ -15,6 +15,9 @@ public abstract class Minigame : MonoBehaviour
     private int pointsWhenSucceeded = 100;
     [SerializeField]
     private float timePenaltyWhenFailed = 1f;
+    [Header("Minigame UI")]
+    [SerializeField]
+    private Canvas minigameUi;
     [Header("Game Events")]
     [SerializeField]
     protected GameEvent minigameSucceededEvent;
@@ -39,6 +42,7 @@ public abstract class Minigame : MonoBehaviour
 	private void Start () 
 	{
         inputController = FindObjectOfType<InputController>();
+        minigameUi.enabled = false;
 	}
 	#endregion
 	
@@ -52,6 +56,10 @@ public abstract class Minigame : MonoBehaviour
         // Remember player playing the minigame:
         this.player = player;
 
+        // Display UI:
+        minigameUi.enabled = true;
+
+        // Start minigame:
         isRunning = true;
     }
 	#endregion
@@ -59,9 +67,13 @@ public abstract class Minigame : MonoBehaviour
 	
 	
 	#region Private Functions
-    protected void FinishMinigame(bool successful)
+    protected virtual void FinishMinigame(bool successful)
     {
+        // Cancel minigame:
         isRunning = false;
+
+        // Hide UI:
+        minigameUi.enabled = false;
 
         // Minigame successful:
         if (successful)

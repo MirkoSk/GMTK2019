@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 
 /// </summary>
-public class SingleButtonMinigame : Minigame 
+public class KeepPressedMinigame : Minigame 
 {
 
     #region Variable Declarations
@@ -14,8 +14,13 @@ public class SingleButtonMinigame : Minigame
     [Header("Minigame Specific")]
     [SerializeField]
     private Image buttonIcon;
+    [SerializeField]
+    private Image progressBar;
+    [SerializeField]
+    private float targetHoldTime = 5f;
     // Private
     private string buttonToPress = null;
+    private float currentHoldTime = 0f;
 	#endregion
 	
 	
@@ -35,8 +40,13 @@ public class SingleButtonMinigame : Minigame
     private void Update()
     {
         if (isRunning && buttonToPress != null)
-            if (Input.GetKeyDown(buttonToPress))
-                FinishMinigame(true);
+        {
+            if (Input.GetKey(buttonToPress))
+                currentHoldTime += Time.deltaTime;
+            else
+                currentHoldTime = 0;
+            UpdateProgressBar();
+        }
     }
     #endregion
 
@@ -60,6 +70,12 @@ public class SingleButtonMinigame : Minigame
 
 
     #region Private Functions
+    private void UpdateProgressBar()
+    {
+        float fillAmount = currentHoldTime / targetHoldTime;
+        progressBar.rectTransform.sizeDelta = new Vector2(1f, fillAmount);
+    }
+
     protected override void FinishMinigame(bool successful)
     {
         // Call base class:
