@@ -43,6 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c5ceb2204299d4b859d65d8665f7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAxisChangedEvent: {fileID: 11400000, guid: c468b747c229e0f4da8ec4c0aa38ab21,
+    type: 2}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
   spriteA: {fileID: 21300000, guid: 3c69fd888b5c08c4ab80a138501a771d, type: 3}
   spriteB: {fileID: 21300000, guid: 0a6945b5a75d83d4ea00e78d23b90ac3, type: 3}
   spriteX: {fileID: 21300000, guid: eeb15437c6b516c4a86cf3cd12e1b802, type: 3}

@@ -10,6 +10,17 @@ public class InputController : MonoBehaviour
 
     #region Variable Declarations
     // Serialized Fields
+    [Header("Game Events")]
+    [SerializeField]
+    private GameEvent playerAxisChangedEvent;
+    [Header("Player References")]
+    [SerializeField]
+    private CharacterController player1;
+    [SerializeField]
+    private CharacterController player2;
+    [SerializeField]
+    private CharacterController player3;
+    [Header("Sprites")]
     [SerializeField]
     private Sprite spriteA;
     [SerializeField]
@@ -44,6 +55,7 @@ public class InputController : MonoBehaviour
     private Dictionary<string, bool> inputUsed;
     private string[] buttonCodes = { Constants.INPUT_A, Constants.INPUT_B, Constants.INPUT_X, Constants.INPUT_Y, Constants.INPUT_SELECT, Constants.INPUT_START };
     private string[] triggerCodes = { Constants.INPUT_LT, Constants.INPUT_RT };
+    private string[] axisCodes = { Constants.INPUT_LEFT_STICK_X, Constants.INPUT_RIGHT_STICK_X, Constants.INPUT_DPAD_X };
     #endregion
 
 
@@ -68,15 +80,18 @@ public class InputController : MonoBehaviour
         inputUsed.Add(Constants.INPUT_SELECT, false);
         inputUsed.Add(Constants.INPUT_START, false);
         /*inputUsed.Add(Constants.INPUT_LEFT_STICK_BUTTON, false);
-        inputUsed.Add(Constants.INPUT_RIGHT_STICK_BUTTON, false);
+        inputUsed.Add(Constants.INPUT_RIGHT_STICK_BUTTON, false);*/
         inputUsed.Add(Constants.INPUT_LEFT_STICK_X, false);
-        inputUsed.Add(Constants.INPUT_LEFT_STICK_Y, false);
+        /*inputUsed.Add(Constants.INPUT_LEFT_STICK_Y, false);*/
         inputUsed.Add(Constants.INPUT_RIGHT_STICK_X, false);
-        inputUsed.Add(Constants.INPUT_RIGHT_STICK_Y, false);
+        /*inputUsed.Add(Constants.INPUT_RIGHT_STICK_Y, false);*/
         inputUsed.Add(Constants.INPUT_DPAD_X, false);
-        inputUsed.Add(Constants.INPUT_DPAD_Y, false);*/
+        /*inputUsed.Add(Constants.INPUT_DPAD_Y, false);*/
         inputUsed.Add(Constants.INPUT_LT, false);
         inputUsed.Add(Constants.INPUT_RT, false);
+
+        // Shuffle initial player control axes:
+        ShufflePlayerAxes();
     }
 
     private void Update()
@@ -89,6 +104,24 @@ public class InputController : MonoBehaviour
 
 
     #region Public Functions
+    public void ShufflePlayerAxes()
+    {
+        // Select random X axis per player:
+        string player1X = GetUnusedAxis();
+        string player2X = GetUnusedAxis();
+        string player3X = GetUnusedAxis();
+
+        // Choose corresponding Y axis per player:
+        string player1Y = GetCorrespondingAxis(player1X);
+        string player2Y = GetCorrespondingAxis(player2X);
+        string player3Y = GetCorrespondingAxis(player3X);
+
+        // Raise game events to publish changed movement axes:
+        RaisePlayerAxisChanged(player1, player1X, player1Y);
+        RaisePlayerAxisChanged(player2, player2X, player2Y);
+        RaisePlayerAxisChanged(player3, player3X, player3Y);
+    }
+
     public string GetUnusedButton()
     {
         // Get all unused buttons first:
@@ -147,6 +180,35 @@ public class InputController : MonoBehaviour
         return result.ToArray();
     }
 
+    public string GetUnusedAxis()
+    {
+        // Get all unused axes first:
+        string[] unusedAxes = GetAllUnusedAxes();
+
+        // Randomly select a single unused axis:
+        string input = unusedAxes[Random.Range(0, unusedAxes.Length)];
+
+        // Mark axis as used:
+        inputUsed[input] = true;
+        return input;
+    }
+
+    public string[] GetUnusedAxes(int number)
+    {
+        // Cancel and return null if not enough axes are available:
+        string[] allUnusedAxes = GetAllUnusedAxes();
+        if (allUnusedAxes.Length < number)
+            return null;
+        if (allUnusedAxes.Length == number)
+            return allUnusedAxes;
+
+        // Pick wanted number of axes randomly:
+        List<string> result = new List<string>();
+        for (int i = 0; i < number; i++)
+            result.Add(GetUnusedAxis());
+        return result.ToArray();
+    }
+
     public void ReleaseInputs(string[] inputs)
     {
         foreach (string s in inputs)
@@ -189,9 +251,14 @@ public class InputController : MonoBehaviour
 
 
     #region Private Functions
+    private void RaisePlayerAxisChanged(CharacterController player, string inputAxisX, string inputAxisY)
+    {
+        playerAxisChangedEvent.Raise(this, player, inputAxisX, inputAxisY);
+    }
+
     private string[] GetAllUnusedButtons()
     {
-        // Return all currently unused buttons (not triggers):
+        // Return all currently unused buttons (not triggers or axes):
         List<string> result = new List<string>();
         foreach (string s in buttonCodes)
             if (!inputUsed[s])
@@ -201,12 +268,40 @@ public class InputController : MonoBehaviour
 
     private string[] GetAllUnusedTriggers()
     {
-        // Return all currently unused triggers (not buttons):
+        // Return all currently unused triggers (not buttons or axes):
         List<string> result = new List<string>();
         foreach (string s in triggerCodes)
             if (!inputUsed[s])
                 result.Add(s);
         return result.ToArray();
+    }
+
+    private string[] GetAllUnusedAxes()
+    {
+        // Return all currently unused triggers (not buttons or triggers):
+        List<string> result = new List<string>();
+        foreach (string s in axisCodes)
+            if (!inputUsed[s])
+                result.Add(s);
+        return result.ToArray();
+    }
+
+    private string GetCorrespondingAxis(string axis)
+    {
+        // Return corresponding Y axis for given X axis or vice versa:
+        if (axis == Constants.INPUT_LEFT_STICK_X)
+            return Constants.INPUT_LEFT_STICK_Y;
+        else if (axis == Constants.INPUT_LEFT_STICK_Y)
+            return Constants.INPUT_LEFT_STICK_X;
+        else if (axis == Constants.INPUT_RIGHT_STICK_X)
+            return Constants.INPUT_RIGHT_STICK_Y;
+        else if (axis == Constants.INPUT_RIGHT_STICK_Y)
+            return Constants.INPUT_RIGHT_STICK_X;
+        else if (axis == Constants.INPUT_DPAD_X)
+            return Constants.INPUT_DPAD_Y;
+        else if (axis == Constants.INPUT_DPAD_Y)
+            return Constants.INPUT_DPAD_X;
+        else return null;
     }
 
     private void LogInputs()
