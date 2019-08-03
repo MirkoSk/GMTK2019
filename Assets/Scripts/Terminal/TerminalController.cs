@@ -11,46 +11,48 @@ public class TerminalController : MonoBehaviour
     #region Variable Declarations
     // Serialized Fields
     [Header("Terminal Stats")]
-    public RangedFloat timeToFail = new RangedFloat();
-    public float timeToExplode = 10f;
-    public float timeToRepair = 10f;
-    public GameObject minigame = null;
+    public RangedFloat TimeToFail = new RangedFloat();
+    public float TimeToExplode = 10f;
+    public float TimeToRepair = 10f;
+    public GameObject Minigame = null;
 
-	// Private
-	
+    // Private
+    private float timerToFail = 0f;
+    private float timerToExplode = 0f;
 	#endregion
 	
 	
 	
 	#region Public Properties
-	
-	#endregion
-	
-	
-	
-	#region Unity Event Functions
-	private void Start () 
+	public float TimerToFail { get { return timerToFail; } }
+    public float TimerToExplode { get { return timerToExplode; } }
+    #endregion
+
+
+
+    #region Unity Event Functions
+    private void Start () 
 	{
 		
 	}
-	#endregion
-	
-	
-	
-	#region Public Functions
-	
-	#endregion
-	
-	
-	
-	#region Private Functions
+    #endregion
 
-	#endregion
-	
-	
-	
-	#region Coroutines
-	
-	#endregion
+
+
+    #region Public Functions
+
+    #endregion
+
+
+
+    #region Private Functions
+
+    #endregion
+
+
+
+    #region Coroutines
+
+    #endregion
 }
 
