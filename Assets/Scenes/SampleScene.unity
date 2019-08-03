@@ -772,6 +772,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputController
       objectReference: {fileID: 0}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 4495733201041842754}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1584549284}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player3
+      value: 
+      objectReference: {fileID: 1689104215}
     - target: {fileID: 1155599429272378874, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -827,21 +842,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 4495733201041842754}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1584549284}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player3
-      value: 
-      objectReference: {fileID: 1689104215}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f59faf1ebec84a4e9a2b26e112787e6, type: 3}
 --- !u!4 &717192919 stripped
@@ -2535,8 +2535,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -621530655
-  m_SortingLayer: -2
+  m_SortingLayerID: 1095177675
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4b1c51ca26c40b34d9c535d3f73020a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
