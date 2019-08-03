@@ -88,6 +88,7 @@ MonoBehaviour:
   RepairMinigame: {fileID: 0}
   terminalState: 0
   trigger: {fileID: 729431341297777945}
+  minigamePosition: {fileID: 8210317054302111851}
 --- !u!114 &576123305617303452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +109,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   linkedMethods:
   - component: {fileID: 1505194646407690319}
-    methodID: 7
+    methodID: 8
     methodName: FixOrRepair
     chosenID: 3
     methodNames: []
@@ -134,7 +135,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   linkedMethods:
   - component: {fileID: 1505194646407690319}
-    methodID: 4
+    methodID: 5
     methodName: FixTerminal
     chosenID: 1
     methodNames: []
@@ -160,7 +161,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   linkedMethods:
   - component: {fileID: 1505194646407690319}
-    methodID: 5
+    methodID: 6
     methodName: FailFixing
     chosenID: 1
     methodNames: []

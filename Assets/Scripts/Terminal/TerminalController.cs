@@ -30,6 +30,7 @@ public class TerminalController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Collider2D trigger = null;
+    [SerializeField] Transform minigamePosition = null;
 
     // Private
     private float timerToFail = 0f;
@@ -41,6 +42,7 @@ public class TerminalController : MonoBehaviour
 	#region Public Properties
 	public float TimerToFail { get { return timerToFail; } }
     public float TimerToExplode { get { return timerToExplode; } }
+    public Transform MinigamePosition { get { return minigamePosition; } }
     #endregion
 
 
