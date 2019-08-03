@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     [Header("References")]
     [SerializeField] Transform playerSprite = null;
     [SerializeField] PlayerUi playerUi = null;
+    [SerializeField] Collider2D playerCollider = null;
     
     // Private Variables
     // Movement
@@ -84,6 +85,13 @@ public class CharacterController : MonoBehaviour
             horizontalInput = 0;
             verticalInput = 0;
             rigidbody.velocity = Vector2.zero;
+            rigidbody.simulated = false;
+            playerCollider.enabled = false;
+        }
+        else
+        {
+            playerCollider.enabled = true;
+            rigidbody.simulated = true;
         }
     }
 
@@ -124,6 +132,8 @@ public class CharacterController : MonoBehaviour
 
     private void RotateCharacter()
     {
+        if (rigidbody.velocity.magnitude <= 0.01f) return;
+
         playerSprite.rotation = Quaternion.LookRotation(Vector3.forward, rigidbody.velocity);
     }
     #endregion

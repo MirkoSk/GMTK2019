@@ -772,6 +772,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputController
       objectReference: {fileID: 0}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 4495733201041842754}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1584549284}
+    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
+        type: 3}
+      propertyPath: player3
+      value: 
+      objectReference: {fileID: 1689104215}
     - target: {fileID: 1155599429272378874, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -827,21 +842,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 4495733201041842754}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1584549284}
-    - target: {fileID: 1411116909626605668, guid: 5f59faf1ebec84a4e9a2b26e112787e6,
-        type: 3}
-      propertyPath: player3
-      value: 
-      objectReference: {fileID: 1689104215}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f59faf1ebec84a4e9a2b26e112787e6, type: 3}
 --- !u!4 &717192919 stripped
@@ -1094,7 +1094,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1

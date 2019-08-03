@@ -397,6 +397,7 @@ MonoBehaviour:
   rotateSpeed: 10
   playerSprite: {fileID: 4856981780213479374}
   playerUi: {fileID: 4872417081717482153}
+  playerCollider: {fileID: 7988742265685132252}
 --- !u!50 &5601704338082067762
 Rigidbody2D:
   serializedVersion: 4
