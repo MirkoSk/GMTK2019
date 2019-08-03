@@ -15,6 +15,7 @@ public class CharacterController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] protected float movementSpeed = 1f;
     [SerializeField] protected float acceleration = 10f;
+    [SerializeField] protected float deceleration = 10f;
 
     [Header("Properties")]
     [Range(1, 4)]
@@ -103,7 +104,11 @@ public class CharacterController : MonoBehaviour
         Vector2 targetVelocity = rigidbody.velocity;
         targetVelocity.x = horizontalInput;
         targetVelocity.y = verticalInput;
-        rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, acceleration * Time.deltaTime);
+
+        if (targetVelocity.magnitude >= rigidbody.velocity.magnitude)
+            rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, acceleration * Time.deltaTime);
+        else
+            rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, deceleration * Time.deltaTime);
     }
     #endregion
 
