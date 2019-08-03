@@ -219,6 +219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsWhenSucceeded: 100
   timePenaltyWhenFailed: 1
+  inputType: 0
+  inputNumber: 1
   minigameUi: {fileID: 5572031041751261468}
   minigameSucceededEvent: {fileID: 11400000, guid: 1fdecc8d2b888214dbd7547c646b480f,
     type: 2}

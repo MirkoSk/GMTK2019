@@ -22,6 +22,7 @@ public class ButtonMasherMinigame : Minigame
     private string buttonToPress = null;
     private int currentButtonPresses = 0;
     private float timer = 0f;
+    private bool iconSizeChanged = false;
     #endregion
 
 
@@ -37,6 +38,8 @@ public class ButtonMasherMinigame : Minigame
     {
         // Call base class:
         base.Start();
+
+        InvokeRepeating("ToggleIconSize", 0.15f, 0.15f);
     }
 
     private void Update()
@@ -91,6 +94,13 @@ public class ButtonMasherMinigame : Minigame
     {
         // Call base class:
         base.FinishMinigame(successful);
+    }
+
+    private void ToggleIconSize()
+    {
+        Vector2 newSize = iconSizeChanged ? new Vector2(0.8f, 0.8f) : new Vector2(0.6f, 0.6f);
+        iconSizeChanged = !iconSizeChanged;
+        buttonIcon.rectTransform.localScale = newSize;
     }
 
     protected override void RaiseMinigameSucceeded(TerminalController terminal, CharacterController player, int points)

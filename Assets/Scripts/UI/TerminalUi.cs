@@ -18,7 +18,8 @@ public class TerminalUi : MonoBehaviour
     [SerializeField]
     private Image destroyedIcon;
     // Private
-
+    private bool warningIconSizeChanged;
+    private bool destroyedIconSizeChanged;
     #endregion
 
 
@@ -34,7 +35,11 @@ public class TerminalUi : MonoBehaviour
 	{
         HideWarning();
         HideDestroyed();
-	}
+
+        // Warning sign animations:
+        InvokeRepeating("ToggleWarningIconSize", 0.3f, 0.3f);
+        InvokeRepeating("ToggleDestroyedIconSize", 0.15f, 0.15f);
+    }
 	#endregion
 	
 	
@@ -49,8 +54,8 @@ public class TerminalUi : MonoBehaviour
                 HideDestroyed();
                 break;
             case TerminalController.TerminalState.Error:
-                HideWarning();
-                DisplayDestroyed();
+                DisplayWarning();
+                HideDestroyed();
                 break;
             case TerminalController.TerminalState.Fixing:
                 HideWarning();
@@ -66,11 +71,25 @@ public class TerminalUi : MonoBehaviour
                 break;
         }
     }
-	#endregion
-	
-	
-	
-	#region Private Functions
+    #endregion
+
+
+
+    #region Private Functions
+    private void ToggleWarningIconSize()
+    {
+        Vector2 newSize = warningIconSizeChanged ? new Vector2(1f, 1f) : new Vector2(0.85f, 0.85f);
+        warningIconSizeChanged = !warningIconSizeChanged;
+        warningIcon.rectTransform.localScale = newSize;
+    }
+
+    private void ToggleDestroyedIconSize()
+    {
+        Vector2 newSize = destroyedIconSizeChanged ? new Vector2(1f, 1f) : new Vector2(0.85f, 0.85f);
+        destroyedIconSizeChanged = !destroyedIconSizeChanged;
+        destroyedIcon.rectTransform.localScale = newSize;
+    }
+
     private void DisplayWarning()
     {
         warningIcon.enabled = true;
