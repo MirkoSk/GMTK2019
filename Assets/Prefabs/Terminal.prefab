@@ -429,7 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terminalCanvas: {fileID: 2672159821916032771}
   warningIcon: {fileID: 4232581250220828613}
-  destroyedIcon: {fileID: 7073282540565764584}
+  dangerIcon: {fileID: 7073282540565764584}
 --- !u!1 &7616677604170070894
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 9219980909956077266}
   - component: {fileID: 7073282540565764584}
   m_Layer: 0
-  m_Name: DestroyedIcon
+  m_Name: DangerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3801232, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

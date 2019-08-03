@@ -16,7 +16,7 @@ public class TerminalUi : MonoBehaviour
     [SerializeField]
     private Image warningIcon;
     [SerializeField]
-    private Image destroyedIcon;
+    private Image dangerIcon;
     // Private
     private bool warningIconSizeChanged;
     private bool destroyedIconSizeChanged;
@@ -87,7 +87,7 @@ public class TerminalUi : MonoBehaviour
     {
         Vector2 newSize = destroyedIconSizeChanged ? new Vector2(1f, 1f) : new Vector2(0.85f, 0.85f);
         destroyedIconSizeChanged = !destroyedIconSizeChanged;
-        destroyedIcon.rectTransform.localScale = newSize;
+        dangerIcon.rectTransform.localScale = newSize;
     }
 
     private void DisplayWarning()
@@ -102,12 +102,12 @@ public class TerminalUi : MonoBehaviour
 
     private void DisplayDestroyed()
     {
-        destroyedIcon.enabled = true;
+        dangerIcon.enabled = true;
     }
 
     private void HideDestroyed()
     {
-        destroyedIcon.enabled = false;
+        dangerIcon.enabled = false;
     }
     #endregion
 
