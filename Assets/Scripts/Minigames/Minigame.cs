@@ -28,11 +28,11 @@ public abstract class Minigame : MonoBehaviour
     protected GameEvent minigameSucceededEvent;
     [SerializeField]
     protected GameEvent minigameFailedEvent;
-    [Header("Sounds")]
+    /*[Header("Sounds")]
     [SerializeField]
     private AudioClip successSound;
     [SerializeField]
-    private AudioClip failSound;
+    private AudioClip failSound;*/
 
     // Private
     private TerminalController terminal = null;
@@ -98,14 +98,14 @@ public abstract class Minigame : MonoBehaviour
         if (successful)
         {
             RaiseMinigameSucceeded(terminal, player, pointsWhenSucceeded);
-            SoundManager.PlaySound(successSound);
+            /*SoundManager.PlaySound(successSound);*/
         }
 
         // Minigame failed:
         else
         {
             RaiseMinigameFailed(terminal, player, timePenaltyWhenFailed);
-            SoundManager.PlaySound(failSound);
+            /*SoundManager.PlaySound(failSound);*/
         }
 
         // Reset references:

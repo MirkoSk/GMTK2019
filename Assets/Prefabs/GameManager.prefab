@@ -70,7 +70,11 @@ MonoBehaviour:
   numberOfTerminals: 6
   miniGamePrefabs:
   - {fileID: 6235019308841095995, guid: be7735271d7f639499626c8871842c16, type: 3}
+  - {fileID: 6235019308841095995, guid: 0c7176b2a3922fc469a0dc4f2409b236, type: 3}
+  - {fileID: 6235019308841095995, guid: d35d070110fc20440b86944c2fca2c8a, type: 3}
   - {fileID: 6235019308841095995, guid: 620b409c38a99144595be96b857e285d, type: 3}
+  - {fileID: 6235019308841095995, guid: 672aed57126d4b6449340c53e715345e, type: 3}
+  - {fileID: 6235019308841095995, guid: 4e118bcc8dbdfc144a88071db49b8c67, type: 3}
   repairMinigamePrefab: {fileID: 6235019308841095995, guid: 04596e7a803ab33479916eb0687b6cf3,
     type: 3}
   difficultyModifier:
