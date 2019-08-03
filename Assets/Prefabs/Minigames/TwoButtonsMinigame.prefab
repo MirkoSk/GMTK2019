@@ -306,3 +306,4 @@ MonoBehaviour:
   buttonIcons:
   - {fileID: 8466949875449320842}
   - {fileID: 4750065895502212201}
+  buttonIconCheckedSize: {x: 0.6, y: 0.6, z: 1}

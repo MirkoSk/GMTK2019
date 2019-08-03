@@ -61,6 +61,9 @@ public abstract class Minigame : MonoBehaviour
 	protected virtual void Start () 
 	{
         inputController = FindObjectOfType<InputController>();
+
+        // Rotate UI to always face up:
+        minigameUi.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
         minigameUi.enabled = false;
 	}
 	#endregion

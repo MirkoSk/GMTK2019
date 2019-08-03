@@ -230,3 +230,4 @@ MonoBehaviour:
   timeLimit: 5
   buttonIcons:
   - {fileID: 8466949875449320842}
+  buttonIconCheckedSize: {x: 0.6, y: 0.6, z: 1}

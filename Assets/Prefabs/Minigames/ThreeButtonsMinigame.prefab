@@ -308,6 +308,7 @@ MonoBehaviour:
   - {fileID: 8466949875449320842}
   - {fileID: 4750065895502212201}
   - {fileID: 5054046718498280412}
+  buttonIconCheckedSize: {x: 0.45, y: 0.45, z: 1}
 --- !u!1 &8438831810244808665
 GameObject:
   m_ObjectHideFlags: 0

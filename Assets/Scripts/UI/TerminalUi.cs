@@ -40,12 +40,18 @@ public class TerminalUi : MonoBehaviour
         InvokeRepeating("ToggleWarningIconSize", 0.3f, 0.3f);
         InvokeRepeating("ToggleDestroyedIconSize", 0.15f, 0.15f);
     }
-	#endregion
-	
-	
-	
-	#region Public Functions
-	public void OnStateChanged(TerminalController.TerminalState state)
+
+    private void Start()
+    {
+        // Rotate to always face up:
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+    }
+    #endregion
+
+
+
+    #region Public Functions
+    public void OnStateChanged(TerminalController.TerminalState state)
     {
         switch (state)
         {

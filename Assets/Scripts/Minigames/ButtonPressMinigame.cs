@@ -18,10 +18,13 @@ public class ButtonPressMinigame : Minigame
     private float timeLimit = 5f;
     [SerializeField]
     private Image[] buttonIcons;
+    [SerializeField]
+    private Vector3 buttonIconCheckedSize = new Vector3(0.6f, 0.6f, 1f);
     // Private
     private string[] buttonsToPress = null;
     private List<string> currentlyPressedButtons;
     private float timer = 0f;
+    private Vector3 buttonIconRegularSize;
     #endregion
 
 
@@ -37,6 +40,9 @@ public class ButtonPressMinigame : Minigame
     {
         // Call base class:
         base.Start();
+
+        // Save regular size for button icons:
+        buttonIconRegularSize = buttonIcons[0].rectTransform.localScale;
     }
 
     private void Update()
@@ -49,9 +55,15 @@ public class ButtonPressMinigame : Minigame
             foreach(string s in buttonsToPress)
             {
                 if (Input.GetButtonDown(s) && !currentlyPressedButtons.Contains(s))
+                {
                     currentlyPressedButtons.Add(s);
+                    CheckButtonIcon(buttonIcons[System.Array.IndexOf(buttonsToPress, s)]);
+                }
                 if (Input.GetButtonUp(s))
+                {
                     currentlyPressedButtons.Remove(s);
+                    UncheckButtonIcon(buttonIcons[System.Array.IndexOf(buttonsToPress, s)]);
+                }
             }
 
             // Check if all buttons have been pressed:
@@ -87,7 +99,10 @@ public class ButtonPressMinigame : Minigame
 
         // Display buttons in UI:
         for (int i = 0; i < numberOfButtons; i++)
+        {
             buttonIcons[i].sprite = inputController.GetInputIcon(buttonsToPress[i]);
+            UncheckButtonIcon(buttonIcons[i]);
+        }
 
         // Start timer:
         timer = 0f;
@@ -97,6 +112,16 @@ public class ButtonPressMinigame : Minigame
 
 
     #region Private Functions
+    private void CheckButtonIcon(Image buttonIcon)
+    {
+        buttonIcon.rectTransform.localScale = buttonIconCheckedSize;
+    }
+
+    private void UncheckButtonIcon(Image buttonIcon)
+    {
+        buttonIcon.rectTransform.localScale = buttonIconRegularSize;
+    }
+
     protected override void FinishMinigame(bool successful)
     {
         // Call base class:
