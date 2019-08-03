@@ -27,6 +27,9 @@ public class EventManager : MonoBehaviour
     List<TerminalController> terminals;
     float difficulty = 1f;
     int erroredTerminals = 0;
+
+    float probability = 0f;
+    float temp = 0f;
 	#endregion
 	
 	
@@ -57,8 +60,8 @@ public class EventManager : MonoBehaviour
 
         for(int i = 0; i < terminals.Count; i++)
         {
-            float probability = ExtensionMethods.Remap(terminals[i].TimerToFail, terminals[i].TimeToFail.minValue, terminals[i].TimeToFail.maxValue, 0f, 100f);
-            float temp = Random.Range(0f, 100f) * difficulty;
+            probability = ExtensionMethods.Remap(terminals[i].TimerToFail, terminals[i].TimeToFail.minValue, terminals[i].TimeToFail.maxValue, 0f, 100f);
+            temp = Random.Range(0f, 100f) * difficulty;
             if (temp < probability)
             {
                 //TODO: Terminal Fail (when Method is available)
