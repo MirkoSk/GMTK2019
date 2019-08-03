@@ -35,7 +35,7 @@ public class TerminalTriggerController : MonoBehaviour
     {
         if (collider.tag.Contains(Constants.TAG_PLAYER))
         {
-            RaisePlayerAccessedTerminal(collider.transform.GetComponentInParent<CharacterController>().PlayerNumber, terminalController);
+            RaisePlayerAccessedTerminal(terminalController, collider.transform.GetComponentInParent<CharacterController>());
         }
     }
     #endregion
@@ -49,9 +49,9 @@ public class TerminalTriggerController : MonoBehaviour
 
 
     #region Private Functions
-    void RaisePlayerAccessedTerminal(int playerNumber, TerminalController terminal)
+    void RaisePlayerAccessedTerminal(TerminalController terminal, CharacterController player)
     {
-        playerAccessedTerminal.Raise(this, playerNumber, terminal);
+        playerAccessedTerminal.Raise(this, terminal, player);
     }
     #endregion
 
