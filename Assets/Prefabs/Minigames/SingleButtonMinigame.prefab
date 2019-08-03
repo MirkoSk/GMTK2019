@@ -57,7 +57,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2140275923
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8331305163521179624
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 8576086859385918968}
   - component: {fileID: 8041080245955789859}
   m_Layer: 0
-  m_Name: TestMinigame
+  m_Name: SingleButtonMinigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,4 +224,5 @@ MonoBehaviour:
     type: 2}
   minigameFailedEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056,
     type: 2}
+  timeLimit: 5
   buttonIcon: {fileID: 8466949875449320842}

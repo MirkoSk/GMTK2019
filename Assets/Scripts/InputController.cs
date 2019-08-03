@@ -116,10 +116,15 @@ public class InputController : MonoBehaviour
         string player2Y = GetCorrespondingAxis(player2X);
         string player3Y = GetCorrespondingAxis(player3X);
 
+        // Load corresponding button icon sprites:
+        Sprite player1Sprite = GetInputIcon(player1X);
+        Sprite player2Sprite = GetInputIcon(player2X);
+        Sprite player3Sprite = GetInputIcon(player3X);
+
         // Raise game events to publish changed movement axes:
-        RaisePlayerAxisChanged(player1, player1X, player1Y);
-        RaisePlayerAxisChanged(player2, player2X, player2Y);
-        RaisePlayerAxisChanged(player3, player3X, player3Y);
+        RaisePlayerAxisChanged(player1, player1X, player1Y, player1Sprite);
+        RaisePlayerAxisChanged(player2, player2X, player2Y, player2Sprite);
+        RaisePlayerAxisChanged(player3, player3X, player3Y, player3Sprite);
     }
 
     public string GetUnusedButton()
@@ -251,9 +256,9 @@ public class InputController : MonoBehaviour
 
 
     #region Private Functions
-    private void RaisePlayerAxisChanged(CharacterController player, string inputAxisX, string inputAxisY)
+    private void RaisePlayerAxisChanged(CharacterController player, string inputAxisX, string inputAxisY, Sprite axisSprite)
     {
-        playerAxisChangedEvent.Raise(this, player, inputAxisX, inputAxisY);
+        playerAxisChangedEvent.Raise(this, player, inputAxisX, inputAxisY, axisSprite);
     }
 
     private string[] GetAllUnusedButtons()

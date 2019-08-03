@@ -80,7 +80,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void SetInputAxes(CharacterController player, string xAxis, string yAxis)
+    public void SetInputAxes(CharacterController player, string xAxis, string yAxis, Sprite axisSprite)
     {
         if (player != this) return;
 
