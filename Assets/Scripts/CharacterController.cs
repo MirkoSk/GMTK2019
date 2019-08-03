@@ -15,10 +15,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField] protected float movementSpeed = 1f;
     [SerializeField] protected float acceleration = 10f;
     [SerializeField] protected float deceleration = 10f;
-
-    [Header("Properties")]
-    [Range(1, 4)]
-    [SerializeField] protected int playerNumber;
     
     // Private Variables
     // Movement
@@ -26,22 +22,16 @@ public class CharacterController : MonoBehaviour
     protected float verticalInput;
     protected bool active = true;
 
-    // Component References
+    // References
     protected new Rigidbody2D rigidbody;
+    [SerializeField] protected string currentAxisX;
+    [SerializeField] protected string currentAxisY;
     #endregion
 
 
 
     #region Public Properties
-    public int PlayerNumber
-    {
-        get { return playerNumber; }
-        set
-        {
-            if (value >= 0 && value <= 4) playerNumber = value;
-            else Debug.LogWarning("Trying to access playerNumber out of range. PlayerNumber = " + value);
-        }
-    }
+
     #endregion
 
 
@@ -65,8 +55,8 @@ public class CharacterController : MonoBehaviour
     {
         if (active)
         {
-            horizontalInput = Input.GetAxis(Constants.INPUT_LEFT_STICK_X) * movementSpeed;
-            verticalInput = Input.GetAxis(Constants.INPUT_LEFT_STICK_Y) * movementSpeed;
+            horizontalInput = Input.GetAxis(currentAxisX) * movementSpeed;
+            verticalInput = Input.GetAxis(currentAxisY) * movementSpeed;
         }
     }
     #endregion
@@ -87,6 +77,14 @@ public class CharacterController : MonoBehaviour
             horizontalInput = 0;
             verticalInput = 0;
         }
+    }
+
+    public void SetInputAxes(CharacterController player, string xAxis, string yAxis)
+    {
+        if (player != this) return;
+
+        currentAxisX = xAxis;
+        currentAxisY = yAxis;
     }
     #endregion
 
