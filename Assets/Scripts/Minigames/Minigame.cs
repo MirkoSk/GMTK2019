@@ -15,6 +15,11 @@ public abstract class Minigame : MonoBehaviour
     private int pointsWhenSucceeded = 100;
     [SerializeField]
     private float timePenaltyWhenFailed = 1f;
+    [Header("Necessary Buttons")]
+    [SerializeField]
+    private InputType inputType = InputType.BUTTON;
+    [SerializeField]
+    private int inputNumber = 1;
     [Header("Minigame UI")]
     [SerializeField]
     private Canvas minigameUi;
@@ -86,10 +91,14 @@ public abstract class Minigame : MonoBehaviour
         // Reset references:
         terminal = null;
         player = null;
+
+        // Release locked buttons:
+        ReleaseInputs();
     }
 
     protected abstract void RaiseMinigameSucceeded(TerminalController terminal, CharacterController player, int points);
     protected abstract void RaiseMinigameFailed(TerminalController terminal, CharacterController player, float timePenalty);
+    protected abstract void ReleaseInputs();
 	#endregion
 	
 	

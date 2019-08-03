@@ -113,6 +113,12 @@ public class KeepPressedMinigame : Minigame
     {
         minigameFailedEvent.Raise(this, terminal, player, timePenalty);
     }
+
+    protected override void ReleaseInputs()
+    {
+        inputController.ReleaseInputs(new string[] { buttonToPress });
+        buttonToPress = null;
+    }
     #endregion
 
 

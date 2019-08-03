@@ -127,10 +127,30 @@ public class InputController : MonoBehaviour
         RaisePlayerAxisChanged(player3, player3X, player3Y, player3Sprite);
     }
 
+    public bool CheckUnusedInputs(InputType inputType, int inputNumber)
+    {
+        switch (inputType)
+        {
+            // Check if at least the needed amount of inputs of a certain input type is currently available:
+            case InputType.BUTTON:
+                return inputNumber < GetAllUnusedButtons().Length;
+            case InputType.TRIGGER:
+                return inputNumber < GetAllUnusedTriggers().Length;
+            case InputType.AXIS:
+                return inputNumber < GetAllUnusedAxes().Length;
+            default:
+                return false;
+        }
+    }
+
     public string GetUnusedButton()
     {
         // Get all unused buttons first:
         string[] unusedButtons = GetAllUnusedButtons();
+
+        // Cancel and return null if no button available:
+        if (unusedButtons.Length == 0)
+            return null;
 
         // Randomly select a single unused button:
         string input = unusedButtons[Random.Range(0, unusedButtons.Length)];
@@ -161,6 +181,10 @@ public class InputController : MonoBehaviour
         // Get all unused triggers first:
         string[] unusedTriggers = GetAllUnusedTriggers();
 
+        // Cancel and return null if no trigger available:
+        if (unusedTriggers.Length == 0)
+            return null;
+
         // Randomly select a single unused trigger:
         string input = unusedTriggers[Random.Range(0, unusedTriggers.Length)];
 
@@ -189,6 +213,10 @@ public class InputController : MonoBehaviour
     {
         // Get all unused axes first:
         string[] unusedAxes = GetAllUnusedAxes();
+
+        // Cancel and return null if no axis available:
+        if (unusedAxes.Length == 0)
+            return null;
 
         // Randomly select a single unused axis:
         string input = unusedAxes[Random.Range(0, unusedAxes.Length)];
