@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1410734276145436947}
   - component: {fileID: 1410734276145436956}
   - component: {fileID: 1410734276145436957}
+  - component: {fileID: 3522272047109175920}
+  - component: {fileID: 5971783412025714246}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -86,3 +88,46 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   linkedMethods: []
   ignoreEventParameters: 1
+--- !u!114 &3522272047109175920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410734276145436958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4efcc9f2bb966419f849f73c81b503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLengh: 600
+  tickInterval: 0.1
+  scoreUpdatedEvent: {fileID: 11400000, guid: 6e58db168cf515b4c873e2bc0130b19b, type: 2}
+  gameTimeUpdatedEvent: {fileID: 11400000, guid: ddef663ae7bdb9840ad5bbce3d4a42f1,
+    type: 2}
+--- !u!114 &5971783412025714246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410734276145436958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1fdecc8d2b888214dbd7547c646b480f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods:
+  - component: {fileID: 3522272047109175920}
+    methodID: 0
+    methodName: UpdateScore
+    chosenID: 1
+    methodNames: []
+    gameObject: {fileID: 1410734276145436958}
+  ignoreEventParameters: 0
