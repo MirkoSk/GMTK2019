@@ -42,7 +42,7 @@ public class KeepPressedMinigame : Minigame
     {
         if (isRunning && buttonToPress != null)
         {
-            if (Input.GetKey(buttonToPress))
+            if (Input.GetButton(buttonToPress))
                 currentHoldTime += Time.deltaTime;
             else
                 currentHoldTime = 0;
@@ -60,10 +60,10 @@ public class KeepPressedMinigame : Minigame
         base.StartMinigame(terminal, player);
 
         // Get random button to press:
-        string button = inputController.GetUnusedButton();
+        buttonToPress = inputController.GetUnusedButton();
 
         // Display button in UI:
-        buttonIcon.sprite = inputController.GetInputIcon(button);
+        buttonIcon.sprite = inputController.GetInputIcon(buttonToPress);
     }
     #endregion
 

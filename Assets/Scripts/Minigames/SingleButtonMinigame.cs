@@ -36,7 +36,7 @@ public class SingleButtonMinigame : Minigame
     private void Update()
     {
         if (isRunning && buttonToPress != null)
-            if (Input.GetKeyDown(buttonToPress))
+            if (Input.GetButtonDown(buttonToPress))
                 FinishMinigame(true);
     }
     #endregion
