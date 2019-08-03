@@ -38,7 +38,10 @@ public abstract class Minigame : MonoBehaviour
 	
 	
 	#region Public Properties
-	
+	public InputType InputType
+    {
+        get { return inputType; }
+    }
 	#endregion
 	
 	
