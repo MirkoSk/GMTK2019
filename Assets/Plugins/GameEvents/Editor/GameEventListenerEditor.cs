@@ -115,7 +115,7 @@ public class GameEventListenerEditor : Editor
                     script.linkedMethods[index].chosenID = EditorGUI.Popup(
                         new Rect(rect.x + rect.width / 2, rect.y, rect.width / 2, EditorGUIUtility.singleLineHeight),
                         script.linkedMethods[index].chosenID, popupOptions);
-                    EditorUtility.SetDirty(script);
+                    //EditorUtility.SetDirty(script);
                     
                     script.linkedMethods[index].gameObject = component.gameObject;
                     script.linkedMethods[index].methodID = script.linkedMethods[index].chosenID > 0 ? methodIDs[script.linkedMethods[index].chosenID - 1] : 0;

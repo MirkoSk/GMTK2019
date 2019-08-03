@@ -21,15 +21,12 @@ public class EventManager : MonoBehaviour
     [Header("Event Settings")]
     [MinMaxRange(0.5f, 1.5f)]
     [SerializeField] RangedFloat difficultyModifier;
-
+    [SerializeField] float tickInterval = .2f;
 
     // Private
     List<TerminalController> terminals = new List<TerminalController>();
     float difficulty = 1f;
     int erroredTerminals = 0;
-
-    float probability = 0f;
-    float temp = 0f;
 	#endregion
 	
 	
@@ -54,25 +51,10 @@ public class EventManager : MonoBehaviour
             terminals.Add(terminalController);
             terminalPrefabs.RemoveAt(spawnTerminalNumber);
         }
+        InvokeRepeating("Tick", tickInterval, tickInterval);
 	}
 
-    private void Update()
-    {
-        difficulty = ExtensionMethods.Remap((float)erroredTerminals, 0, (float)terminals.Count, difficultyModifier.minValue, difficultyModifier.maxValue);
-
-        for(int i = 0; i < terminals.Count; i++)
-        {
-            probability = ExtensionMethods.Remap(terminals[i].TimerToFail, terminals[i].TimeToFail.minValue, terminals[i].TimeToFail.maxValue, 0f, 100f);
-            temp = Random.Range(0f, 100f) * difficulty;
-            if (temp < probability)
-            {
-                //TODO: Terminal Fail (when Method is available)
-                terminals[i].InvokeError();
-                erroredTerminals++;
-            }
-
-        }
-    }
+    
     #endregion
 
 
@@ -87,7 +69,26 @@ public class EventManager : MonoBehaviour
 
 
     #region Private Functions
+    private void Tick()
+    {
+        difficulty = ((float)erroredTerminals).Remap(0, terminals.Count, difficultyModifier.minValue, difficultyModifier.maxValue);
 
+        for (int i = 0; i < terminals.Count; i++)
+        {
+            if (terminals[i].TimerToFail >= terminals[i].TimeToFail.minValue)
+            {
+                float probability = terminals[i].TimerToFail.Remap(terminals[i].TimeToFail.minValue, terminals[i].TimeToFail.maxValue, 0f, 100f);
+                float temp = Random.Range(0f, 100f) * difficulty;
+
+
+                if (temp < probability)
+                {
+                    terminals[i].InvokeError();
+                    erroredTerminals++;
+                }
+            }
+        }
+    }
     #endregion
 
 
