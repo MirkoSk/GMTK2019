@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     // Private
     int globalScore = 0;
-    float gameTimer = 0f;
+    float gameTimer;
 
     #endregion
 
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     #region Unity Event Functions
     private void Start()
     {
+        gameTimer = gameLengh;
         InvokeRepeating("Tick", tickInterval, tickInterval);
     }
     #endregion
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
     #region Private Functions
     private void Tick()
     {
-        gameTimer += tickInterval;
+        gameTimer -= tickInterval;
         RaiseGameTimerUpdated(gameTimer, gameLengh);
     }
 
