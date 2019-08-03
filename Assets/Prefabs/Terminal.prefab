@@ -109,9 +109,9 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   linkedMethods:
   - component: {fileID: 1505194646407690319}
-    methodID: 8
-    methodName: FixOrRepair
-    chosenID: 3
+    methodID: 4
+    methodName: StartFixingOrRepairing
+    chosenID: 1
     methodNames: []
     gameObject: {fileID: 3344290510320166441}
   ignoreEventParameters: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   linkedMethods:
   - component: {fileID: 1505194646407690319}
     methodID: 5
-    methodName: FixTerminal
+    methodName: FixOrRepair
     chosenID: 1
     methodNames: []
     gameObject: {fileID: 3344290510320166441}
@@ -162,7 +162,7 @@ MonoBehaviour:
   linkedMethods:
   - component: {fileID: 1505194646407690319}
     methodID: 6
-    methodName: FailFixing
+    methodName: FailFixOrRepair
     chosenID: 1
     methodNames: []
     gameObject: {fileID: 3344290510320166441}

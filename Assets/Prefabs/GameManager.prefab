@@ -46,11 +46,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03969053d971bf7448efddfc5f7d07ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terminalPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   terminalPrefabs:
   - {fileID: 3344290510320166441, guid: 398f0805497194648bf3fe759013f915, type: 3}
-  numberOfTerminals: 1
+  numberOfTerminals: 6
   miniGamePrefabs:
   - {fileID: 6235019308841095995, guid: be7735271d7f639499626c8871842c16, type: 3}
+  - {fileID: 6235019308841095995, guid: 620b409c38a99144595be96b857e285d, type: 3}
   repairMinigamePrefab: {fileID: 6235019308841095995, guid: 04596e7a803ab33479916eb0687b6cf3,
     type: 3}
   difficultyModifier:
