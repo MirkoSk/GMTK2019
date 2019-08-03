@@ -194,7 +194,7 @@ public class InputController : MonoBehaviour
         // Return all currently unused buttons (not triggers):
         List<string> result = new List<string>();
         foreach (string s in buttonCodes)
-            if (inputUsed[s])
+            if (!inputUsed[s])
                 result.Add(s);
         return result.ToArray();
     }
@@ -204,7 +204,7 @@ public class InputController : MonoBehaviour
         // Return all currently unused triggers (not buttons):
         List<string> result = new List<string>();
         foreach (string s in triggerCodes)
-            if (inputUsed[s])
+            if (!inputUsed[s])
                 result.Add(s);
         return result.ToArray();
     }
