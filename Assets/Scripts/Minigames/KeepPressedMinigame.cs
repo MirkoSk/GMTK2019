@@ -17,6 +17,8 @@ public class KeepPressedMinigame : Minigame
     [SerializeField]
     private Image progressBar;
     [SerializeField]
+    private bool failWhenButtonReleased = false;
+    [SerializeField]
     private float targetHoldTime = 5f;
     // Private
     private string buttonToPress = null;
@@ -42,11 +44,27 @@ public class KeepPressedMinigame : Minigame
     {
         if (isRunning && buttonToPress != null)
         {
+            // Count time that button has been pressed:
             if (Input.GetButton(buttonToPress))
                 currentHoldTime += Time.deltaTime;
             else
+            {
+                // Fail when button is released too early:
+                if (failWhenButtonReleased && currentHoldTime > 0f)
+                {
+                    FinishMinigame(false);
+                    return;
+                }
+
+                // Reset progress:
                 currentHoldTime = 0;
+            }
+
             UpdateProgressBar();
+
+            // Check if finished:
+            if (currentHoldTime >= targetHoldTime)
+                FinishMinigame(true);
         }
     }
     #endregion
