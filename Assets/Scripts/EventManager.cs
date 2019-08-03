@@ -48,7 +48,9 @@ public class EventManager : MonoBehaviour
             int spawnTerminalNumber = Random.Range(0, terminalPrefabs.Count);
             GameObject terminalPrefab = Instantiate(terminalPrefabs[spawnTerminalNumber]);
             TerminalController terminalController = terminalPrefab.GetComponent<TerminalController>();
-            terminalController.LinkedMinigame = Instantiate(miniGamePrefabs[Random.Range(0, miniGamePrefabs.Count)]);
+            GameObject minigamePrefab = Instantiate(miniGamePrefabs[Random.Range(0, miniGamePrefabs.Count)]);
+            Minigame minigame = minigamePrefab.GetComponent<Minigame>();
+            terminalController.LinkedMinigame = minigame;
             terminals.Add(terminalController);
             terminalPrefabs.RemoveAt(spawnTerminalNumber);
         }
