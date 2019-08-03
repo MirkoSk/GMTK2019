@@ -39,7 +39,7 @@ public abstract class Minigame : MonoBehaviour
 	
 	
 	#region Unity Event Functions
-	private void Start () 
+	protected virtual void Start () 
 	{
         inputController = FindObjectOfType<InputController>();
         minigameUi.enabled = false;

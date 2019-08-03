@@ -32,9 +32,10 @@ public class KeepPressedMinigame : Minigame
 	
 	
 	#region Unity Event Functions
-	private void Start () 
+	protected override void Start () 
 	{
-		
+        // Call base class:
+        base.Start();
 	}
 
     private void Update()
@@ -63,7 +64,6 @@ public class KeepPressedMinigame : Minigame
 
         // Display button in UI:
         buttonIcon.sprite = inputController.GetInputIcon(button);
-        buttonIcon.enabled = true;
     }
     #endregion
 

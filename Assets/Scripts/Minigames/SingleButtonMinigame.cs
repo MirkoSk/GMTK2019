@@ -16,21 +16,22 @@ public class SingleButtonMinigame : Minigame
     private Image buttonIcon;
     // Private
     private string buttonToPress = null;
-	#endregion
-	
-	
-	
-	#region Public Properties
-	
-	#endregion
-	
-	
-	
-	#region Unity Event Functions
-	private void Start () 
-	{
-		
-	}
+    #endregion
+
+
+
+    #region Public Properties
+
+    #endregion
+
+
+
+    #region Unity Event Functions
+    protected override void Start()
+    {
+        // Call base class:
+        base.Start();
+    }
 
     private void Update()
     {
@@ -53,7 +54,6 @@ public class SingleButtonMinigame : Minigame
 
         // Display button in UI:
         buttonIcon.sprite = inputController.GetInputIcon(button);
-        buttonIcon.enabled = true;
     }
     #endregion
 
