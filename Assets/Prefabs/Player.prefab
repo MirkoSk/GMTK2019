@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 7704607084125341157}
   - component: {fileID: 4872417081717482153}
   - component: {fileID: 5684206909367955151}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,8 +185,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 2140275923
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4894069377311244758
 MonoBehaviour:
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7504420122569619462}
   - component: {fileID: 1945899879287654704}
   - component: {fileID: 2449224808859285197}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AxisIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

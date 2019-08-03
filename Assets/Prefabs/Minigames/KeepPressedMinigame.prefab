@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5572031041751261468}
   - component: {fileID: 8331305163521179624}
   - component: {fileID: 6929671212855946776}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MinigameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 7271328547207212060}
   - component: {fileID: 1608928466971096403}
   - component: {fileID: 3282738178226202843}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3877466619484559447}
   - component: {fileID: 895930692204757909}
   - component: {fileID: 8466949875449320842}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ButtonIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4860065238763825173}
   - component: {fileID: 5486903439108324916}
   - component: {fileID: 3753011417175487528}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

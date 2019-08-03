@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5572031041751261468}
   - component: {fileID: 8331305163521179624}
   - component: {fileID: 6929671212855946776}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MinigameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3877466619484559447}
   - component: {fileID: 895930692204757909}
   - component: {fileID: 8466949875449320842}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ButtonIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
