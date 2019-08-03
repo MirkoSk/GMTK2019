@@ -85,7 +85,9 @@ MonoBehaviour:
   TimeToExplode: 10
   TimeToRepair: 10
   LinkedMinigame: {fileID: 0}
+  RepairMinigame: {fileID: 0}
   terminalState: 0
+  trigger: {fileID: 729431341297777945}
 --- !u!114 &576123305617303452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,9 +108,9 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   linkedMethods:
   - component: {fileID: 1505194646407690319}
-    methodID: 3
-    methodName: StartFixing
-    chosenID: 1
+    methodID: 7
+    methodName: FixOrRepair
+    chosenID: 3
     methodNames: []
     gameObject: {fileID: 3344290510320166441}
   ignoreEventParameters: 0

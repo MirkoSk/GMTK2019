@@ -23,9 +23,13 @@ public class TerminalController : MonoBehaviour
     public float TimeToExplode = 10f;
     public float TimeToRepair = 10f;
     public Minigame LinkedMinigame = null;
+    public Minigame RepairMinigame = null;
 
     [Header("Terminal State")]
     [SerializeField] TerminalState terminalState = TerminalState.Idle;
+
+    [Header("References")]
+    [SerializeField] Collider2D trigger = null;
 
     // Private
     private float timerToFail = 0f;
@@ -51,6 +55,11 @@ public class TerminalController : MonoBehaviour
                 break;
 
             case TerminalState.Error:
+                if (timerToExplode >= TimeToExplode)
+                {
+                    terminalState = TerminalState.Destroyed;
+                }
+
                 timerToExplode += Time.deltaTime;
                 break;
 
@@ -77,6 +86,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        trigger.enabled = true;
         timerToFail = 0f;
         terminalState = TerminalState.Error;
     }
@@ -91,6 +101,7 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        trigger.enabled = false;
         LinkedMinigame.StartMinigame(this, player);
         terminalState = TerminalState.Fixing;
     }
@@ -119,9 +130,29 @@ public class TerminalController : MonoBehaviour
             return;
         }
 
+        trigger.enabled = true;
         timerToExplode += timePenalty;
-        // TODO: Switch to destroyed state when implemented
+        terminalState = TerminalState.Destroyed;
+    }
+
+    public void Repair(TerminalController terminal, CharacterController player)
+    {
+        if (terminal != this) return;
+
+        if (terminalState != TerminalState.Destroyed)
+        {
+            Debug.LogError("Tried to repair Terminal in wrong state: " + terminalState + "State.", gameObject);
+            return;
+        }
+
+        RepairMinigame.StartMinigame(this, player);
         terminalState = TerminalState.Idle;
+    }
+
+    public void FixOrRepair (TerminalController terminal, CharacterController player)
+    {
+        if (terminal == this && terminalState == TerminalState.Error) StartFixing(terminal, player);
+        else if (terminal == this && terminalState == TerminalState.Destroyed) Repair(terminal, player);
     }
     #endregion
 
