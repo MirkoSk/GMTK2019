@@ -23,6 +23,8 @@ public abstract class Minigame : MonoBehaviour
     // Private
     private TerminalController terminal = null;
     private CharacterController player = null;
+    protected InputController inputController;
+    protected bool isRunning = false;
 	#endregion
 	
 	
@@ -36,7 +38,7 @@ public abstract class Minigame : MonoBehaviour
 	#region Unity Event Functions
 	private void Start () 
 	{
-		
+        inputController = FindObjectOfType<InputController>();
 	}
 	#endregion
 	
@@ -49,16 +51,20 @@ public abstract class Minigame : MonoBehaviour
         this.terminal = terminal;
         // Remember player playing the minigame:
         this.player = player;
+
+        isRunning = true;
     }
 	#endregion
 	
 	
 	
 	#region Private Functions
-    protected void FinishMinigame(bool result)
+    protected void FinishMinigame(bool successful)
     {
+        isRunning = false;
+
         // Minigame successful:
-        if (result)
+        if (successful)
             RaiseMinigameSucceeded(terminal, player, pointsWhenSucceeded);
 
         // Minigame failed:

@@ -10,7 +10,36 @@ public class InputController : MonoBehaviour
 
     #region Variable Declarations
     // Serialized Fields
-
+    [SerializeField]
+    private Sprite spriteA;
+    [SerializeField]
+    private Sprite spriteB;
+    [SerializeField]
+    private Sprite spriteX;
+    [SerializeField]
+    private Sprite spriteY;
+    [SerializeField]
+    private Sprite spriteLB;
+    [SerializeField]
+    private Sprite spriteRB;
+    [SerializeField]
+    private Sprite spriteSelect;
+    [SerializeField]
+    private Sprite spriteStart;
+    [SerializeField]
+    private Sprite spriteLeftStickButton;
+    [SerializeField]
+    private Sprite spriteRightStickButton;
+    [SerializeField]
+    private Sprite spriteLeftStick;
+    [SerializeField]
+    private Sprite spriteRightStick;
+    [SerializeField]
+    private Sprite spriteDpad;
+    [SerializeField]
+    private Sprite spriteLT;
+    [SerializeField]
+    private Sprite spriteRT;
     // Private
     private Dictionary<string, bool> inputUsed;
     private string[] buttonCodes = { Constants.INPUT_A, Constants.INPUT_B, Constants.INPUT_X, Constants.INPUT_Y, Constants.INPUT_SELECT, Constants.INPUT_START };
@@ -122,6 +151,38 @@ public class InputController : MonoBehaviour
     {
         foreach (string s in inputs)
             inputUsed[s] = false;
+    }
+
+    public Sprite GetInputIcon(string input)
+    {
+        if (input == Constants.INPUT_A)
+            return spriteA;
+        else if (input == Constants.INPUT_B)
+            return spriteB;
+        else if (input == Constants.INPUT_X)
+            return spriteX;
+        else if (input == Constants.INPUT_Y)
+            return spriteY;
+        else if (input == Constants.INPUT_LB)
+            return spriteLB;
+        else if (input == Constants.INPUT_RB)
+            return spriteRB;
+        else if (input == Constants.INPUT_SELECT)
+            return spriteSelect;
+        else if (input == Constants.INPUT_START)
+            return spriteStart;
+        else if (input == Constants.INPUT_LEFT_STICK_BUTTON)
+            return spriteLeftStickButton;
+        else if (input == Constants.INPUT_RIGHT_STICK_BUTTON)
+            return spriteRightStickButton;
+        else if (input == Constants.INPUT_LEFT_STICK_X || input == Constants.INPUT_LEFT_STICK_Y)
+            return spriteLeftStick;
+        else if (input == Constants.INPUT_RIGHT_STICK_X || input == Constants.INPUT_RIGHT_STICK_Y)
+            return spriteRightStick;
+        else if (input == Constants.INPUT_DPAD_X || input == Constants.INPUT_DPAD_Y)
+            return spriteDpad;
+        else
+            return null;
     }
     #endregion
 

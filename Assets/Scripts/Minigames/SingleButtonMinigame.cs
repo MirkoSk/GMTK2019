@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
 /// </summary>
 public class SingleButtonMinigame : Minigame 
 {
-	
-	#region Variable Declarations
-	// Serialized Fields
-	
-	// Private
-	
+
+    #region Variable Declarations
+    // Serialized Fields
+    [SerializeField]
+    private Image buttonIcon;
+    // Private
+    private string buttonToPress = null;
 	#endregion
 	
 	
@@ -28,6 +30,13 @@ public class SingleButtonMinigame : Minigame
 	{
 		
 	}
+
+    private void Update()
+    {
+        if (isRunning && buttonToPress != null)
+            if (Input.GetKeyDown(buttonToPress))
+                FinishMinigame(true);
+    }
     #endregion
 
 
@@ -38,7 +47,12 @@ public class SingleButtonMinigame : Minigame
         // Call base class:
         base.StartMinigame(terminal, player);
 
-        // TODO
+        // Get random button to press:
+        string button = inputController.GetUnusedButton();
+
+        // Display button in UI:
+        buttonIcon.sprite = inputController.GetInputIcon(button);
+        buttonIcon.enabled = true;
     }
     #endregion
 
