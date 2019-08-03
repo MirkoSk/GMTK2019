@@ -19,7 +19,7 @@ public class TerminalController : MonoBehaviour
     #region Variable Declarations
     // Serialized Fields
     [Header("Terminal Stats")]
-    [MinMaxRange(0.1f, 20f)]
+    [MinMaxRange(0.1f, 40f)]
     public RangedFloat TimeToFail = new RangedFloat();
     public float TimeToExplode = 10f;
     public float TimeToRepair = 10f;

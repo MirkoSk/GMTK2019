@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeToFail:
     minValue: 4.6541476
-    maxValue: 9.7287
+    maxValue: 20
   TimeToExplode: 10
   TimeToRepair: 10
   LinkedMinigame: {fileID: 0}
@@ -222,7 +222,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4599000550858187091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
