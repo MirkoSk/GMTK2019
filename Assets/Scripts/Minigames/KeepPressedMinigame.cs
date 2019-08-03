@@ -23,18 +23,19 @@ public class KeepPressedMinigame : Minigame
     // Private
     private string buttonToPress = null;
     private float currentHoldTime = 0f;
-	#endregion
-	
-	
-	
-	#region Public Properties
-	
-	#endregion
-	
-	
-	
-	#region Unity Event Functions
-	protected override void Start () 
+    private float displayedFillAmount = 0f;
+    #endregion
+
+
+
+    #region Public Properties
+
+    #endregion
+
+
+
+    #region Unity Event Functions
+    protected override void Start () 
 	{
         // Call base class:
         base.Start();
@@ -80,8 +81,9 @@ public class KeepPressedMinigame : Minigame
         // Get random button to press:
         buttonToPress = inputController.GetUnusedButton();
 
-        // Display button in UI:
+        // Initialize UI:
         buttonIcon.sprite = inputController.GetInputIcon(buttonToPress);
+        displayedFillAmount = 0f;
     }
     #endregion
 
@@ -90,8 +92,10 @@ public class KeepPressedMinigame : Minigame
     #region Private Functions
     private void UpdateProgressBar()
     {
+        // Animate progress bar smoothly:
         float fillAmount = currentHoldTime / targetHoldTime;
-        progressBar.rectTransform.sizeDelta = new Vector2(1f, fillAmount);
+        displayedFillAmount = Mathf.Min(0.9f * displayedFillAmount + 0.1f * fillAmount, 1f);
+        progressBar.rectTransform.localScale = new Vector2(1f, displayedFillAmount);
     }
 
     protected override void FinishMinigame(bool successful)
