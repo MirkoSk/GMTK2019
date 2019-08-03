@@ -76,7 +76,8 @@ MonoBehaviour:
   difficultyModifier:
     minValue: 0.74754274
     maxValue: 1.2451766
-  tickInterval: 0.2
+  tickInterval: 2
+  inputController: {fileID: 0}
 --- !u!114 &1410734276145436957
 MonoBehaviour:
   m_ObjectHideFlags: 0
