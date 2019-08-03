@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     #region Variable Declarations
     // Serialized Fields
     [Header("Terminal Settings")]
+    [SerializeField] List<Transform> terminalPositions;
     [SerializeField] List<GameObject> terminalPrefabs;
     [Tooltip("Number of Terminals that get placed in the Level at game start")]
     [SerializeField] int numberOfTerminals;
@@ -45,7 +46,10 @@ public class EventManager : MonoBehaviour
         {
             //Spawn Terminal
             int spawnTerminalNumber = Random.Range(0, terminalPrefabs.Count);
-            GameObject terminalPrefab = Instantiate(terminalPrefabs[spawnTerminalNumber]);
+            int parentNumber = Random.Range(0, terminalPositions.Count);
+            Transform parent = terminalPositions[parentNumber];
+            parent.gameObject.SetActive(true);
+            GameObject terminalPrefab = Instantiate(terminalPrefabs[spawnTerminalNumber], parent);
             TerminalController terminalController = terminalPrefab.GetComponent<TerminalController>();
 
             //Spawn Minigame
@@ -59,7 +63,7 @@ public class EventManager : MonoBehaviour
             terminalController.LinkedMinigame = minigameController;
             terminalController.RepairMinigame = repairMinigameController;
             terminals.Add(terminalController);
-            terminalPrefabs.RemoveAt(spawnTerminalNumber);
+            terminalPositions.RemoveAt(parentNumber);
         }
         InvokeRepeating("Tick", tickInterval, tickInterval);
 	}
