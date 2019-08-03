@@ -84,6 +84,13 @@ public class KeepPressedMinigame : Minigame
         // Initialize UI:
         buttonIcon.sprite = inputController.GetInputIcon(buttonToPress);
         displayedFillAmount = 0f;
+
+        // Cancel minigame as successful if no inputs are available:
+        if (buttonToPress == null)
+        {
+            Debug.LogWarning("Minigame has been canceled, no unused inputs available");
+            FinishMinigame(true);
+        }
     }
     #endregion
 
@@ -102,6 +109,10 @@ public class KeepPressedMinigame : Minigame
     {
         // Call base class:
         base.FinishMinigame(successful);
+
+        // Reset variables:
+        currentHoldTime = 0f;
+        displayedFillAmount = 0f;
     }
 
     protected override void RaiseMinigameSucceeded(TerminalController terminal, CharacterController player, int points)

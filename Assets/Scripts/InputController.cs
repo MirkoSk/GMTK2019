@@ -53,7 +53,7 @@ public class InputController : MonoBehaviour
     private Sprite spriteRT;
     // Private
     private Dictionary<string, bool> inputUsed;
-    private string[] buttonCodes = { Constants.INPUT_A, Constants.INPUT_B, Constants.INPUT_X, Constants.INPUT_Y, Constants.INPUT_SELECT, Constants.INPUT_START };
+    private string[] buttonCodes = { Constants.INPUT_A, Constants.INPUT_B, Constants.INPUT_X, Constants.INPUT_Y, Constants.INPUT_LB, Constants.INPUT_RB, Constants.INPUT_SELECT, Constants.INPUT_START };
     private string[] triggerCodes = { Constants.INPUT_LT, Constants.INPUT_RT };
     private string[] axisCodes = { Constants.INPUT_LEFT_STICK_X, Constants.INPUT_RIGHT_STICK_X, Constants.INPUT_DPAD_X };
     #endregion

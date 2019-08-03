@@ -69,6 +69,13 @@ public class SingleButtonMinigame : Minigame
 
         // Start timer:
         timer = 0f;
+
+        // Cancel minigame as successful if no inputs are available:
+        if (buttonToPress == null)
+        {
+            Debug.LogWarning("Minigame has been canceled, no unused inputs available");
+            FinishMinigame(true);
+        }
     }
     #endregion
 
