@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 #region Private Functions
     private void Tick()
     {
-        if (gameTimer <= 0)
+        if (Mathf.Floor(gameTimer) <= 0)
         {
             RaiseGameOver(true);
         }
