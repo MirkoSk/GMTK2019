@@ -13,8 +13,18 @@ public class ResultScreen : MonoBehaviour
     // Serialized Fields
     [Header("Settings")]
     [SerializeField]
+    private Scores scoreContainer;
+    [SerializeField]
+    private string remainingTimePrefix = "Remaining Time: ";
+    [SerializeField]
     private string totalScorePrefix = "Total Score: ";
     [Header("UI References")]
+    [SerializeField]
+    private Text[] headerSuccess;
+    [SerializeField]
+    private Text[] headerFailure;
+    [SerializeField]
+    private Text remainingTimeText;
     [SerializeField]
     private Text totalScoreText;
     [SerializeField]
@@ -32,10 +42,10 @@ public class ResultScreen : MonoBehaviour
     [SerializeField]
     private Image buttonIcon;
     // Private
-    private int totalScore;
+    /*private int totalScore;
     private int player1Score;
     private int player2Score;
-    private int player3Score;
+    private int player3Score;*/
 
     private bool iconSizeChanged = false;
     private bool inputAllowed = false;
@@ -52,6 +62,10 @@ public class ResultScreen : MonoBehaviour
     #region Unity Event Functions
     private void Start () 
 	{
+        UpdateTime();
+        UpdateScores();
+        DisplayMvp();
+
         Invoke("AllowInput", 2f);
         InvokeRepeating("ToggleIconSize", 0.6f, 0.6f);
     }
@@ -72,15 +86,45 @@ public class ResultScreen : MonoBehaviour
 
 
     #region Private Functions
+    private void UpdateTime()
+    {
+        if (scoreContainer.TimeLeft > 0f)
+        {
+            int minutes = Mathf.FloorToInt(scoreContainer.TimeLeft / 60f);
+            int seconds = Mathf.FloorToInt(scoreContainer.TimeLeft - minutes * 60f);
+            string timeString = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+            remainingTimeText.text = timeString;
+        }
+        else
+            remainingTimeText.enabled = false;
+
+        foreach (Text t in headerSuccess)
+            if (scoreContainer.TimeLeft > 0f)
+                t.enabled = false;
+            else
+                t.enabled = true;
+        foreach (Text t in headerFailure)
+            if (scoreContainer.TimeLeft > 0f)
+                t.enabled = true;
+            else
+                t.enabled = false;
+    }
+
     private void UpdateScores()
     {
-        // TODO
+        totalScoreText.text = totalScorePrefix + scoreContainer.ScoreGlobal.ToString();
+        player1ScoreText.text = scoreContainer.ScorePlayer1.ToString();
+        player2ScoreText.text = scoreContainer.ScorePlayer2.ToString();
+        player3ScoreText.text = scoreContainer.ScorePlayer3.ToString();
     }
 
     private void DisplayMvp()
     {
-        int highscore = Mathf.Max(player1Score, player2Score, player3Score);
-        // TODO
+        int highscore = Mathf.Max(scoreContainer.ScorePlayer1, scoreContainer.ScorePlayer2, scoreContainer.ScorePlayer3);
+        player1Crown.enabled = scoreContainer.ScorePlayer1 == highscore;
+        player2Crown.enabled = scoreContainer.ScorePlayer2 == highscore;
+        player3Crown.enabled = scoreContainer.ScorePlayer3 == highscore;
     }
 
     private void Continue()
