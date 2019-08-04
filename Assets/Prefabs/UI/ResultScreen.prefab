@@ -1435,6 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreContainer: {fileID: 0}
+  remainingTimePrefix: 'Remaining Time: '
   totalScorePrefix: 'Total Score: '
   headerSuccess:
   - {fileID: 5592111917590398422}
@@ -1442,6 +1443,7 @@ MonoBehaviour:
   headerFailure:
   - {fileID: 8602965548151915423}
   - {fileID: 4543677671677220535}
+  remainingTimeText: {fileID: 0}
   totalScoreText: {fileID: 6181772639494117536}
   player1ScoreText: {fileID: 4974446092614674356}
   player2ScoreText: {fileID: 4999572038407807980}

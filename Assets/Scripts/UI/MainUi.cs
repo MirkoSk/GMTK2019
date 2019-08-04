@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,9 +18,13 @@ public class MainUi : MonoBehaviour
     [SerializeField]
     private Text timerText;
     [SerializeField]
+    private Text[] countdownText;
+    [SerializeField]
     private Image[] defectTerminalIcons;
     [SerializeField]
     private Image alarmOverlay;
+    [SerializeField]
+    private Image explosionOverlay;
     [Header("Colors")]
     [SerializeField]
     private Color defectTerminalIconDefaultColor;
@@ -27,9 +32,12 @@ public class MainUi : MonoBehaviour
     private Color defectTerminalIconActiveColor;
     [Header("Sounds")]
     [SerializeField]
+    private AudioClip countdownSound;
+    [SerializeField]
     private AudioClip alarmSound;
     // Private
     private int numberOfDestroyedTerminals = 0;
+    private bool isExploding = false;
     #endregion
 
 
@@ -44,8 +52,9 @@ public class MainUi : MonoBehaviour
     private void Start()
     {
         UpdateScoreDisplay(0);
-        //UpdateTimerDisplay();
+        UpdateTimerDisplay(60f, 60f);
         UpdateDefectDisplay();
+        explosionOverlay.enabled = false;
     }
     #endregion
 
@@ -64,6 +73,13 @@ public class MainUi : MonoBehaviour
         string timeString = string.Format("{0:0}:{1:00}", minutes, seconds);
 
         timerText.text = timeString;
+
+        // Display countdown during last 10 seconds:
+        foreach (Text t in countdownText)
+            if (newTime <= 10f)
+                t.text = timeString;
+            else
+                t.text = "";
     }
 
     public void OnTerminalDestroyed(TerminalController terminal)
@@ -76,6 +92,12 @@ public class MainUi : MonoBehaviour
     {
         numberOfDestroyedTerminals--;
         UpdateDefectDisplay();
+    }
+
+    public void OnGameOver(bool successful)
+    {
+        if (!successful)
+            ActivateExplosionOverlay();
     }
     #endregion
 
@@ -102,7 +124,6 @@ public class MainUi : MonoBehaviour
 
     private void ActivateAlarmOverlay()
     {
-        Debug.Log("ActivateAlarmOverlay");
         if (!IsInvoking("ToogleAlarmOverlay"))
         {
             CancelInvoke("ToggleAlarmOverlay");
@@ -113,7 +134,6 @@ public class MainUi : MonoBehaviour
 
     private void DeactivateAlarmOverlay()
     {
-        Debug.Log("DeactivateAlarmOverlay");
         CancelInvoke("ToggleAlarmOverlay");
         alarmOverlay.enabled = false;
     }
@@ -123,6 +143,17 @@ public class MainUi : MonoBehaviour
         alarmOverlay.enabled = !alarmOverlay.enabled;
         if (alarmOverlay.enabled)
             SoundManager.PlaySound(alarmSound);
+    }
+
+    private void ActivateExplosionOverlay()
+    {
+        if (!isExploding)
+        {
+            isExploding = true;
+            explosionOverlay.enabled = true;
+            explosionOverlay.color = new Color(1f, 1f, 1f, 0f);
+            explosionOverlay.DOColor(new Color(1f, 1f, 1f, 1f), 8f);
+        }
     }
     #endregion
 
