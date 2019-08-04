@@ -58,6 +58,10 @@ public class TerminalController : MonoBehaviour
     [SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private ParticleSystem destroyedEffect;
 
+    [Header("Game Events")]
+    [SerializeField] GameEvent terminalDestroyed = null;
+    [SerializeField] GameEvent terminalRepaired = null;
+
     // Private
     private float timerToFail = 0f;
     private float timerToExplode = 0f;
@@ -266,13 +270,17 @@ public class TerminalController : MonoBehaviour
         else if (state == TerminalState.Idle)
             MultipleTargetCamera.Instance.RemoveTarget(transform);
 
-        // Explosion particle effect:
+        // Explosion
         if(state == TerminalState.Destroyed && previousState != TerminalState.Destroyed && previousState != TerminalState.Repairing)
         {
             explosionEffect.Play();
             Invoke("StopExplosion", 1f);
             CameraShaker.Instance.ShakeOnce(CameraShakePresets.Explosion.Magnitude, CameraShakePresets.Explosion.Roughness, cameraShakeFadeIn, cameraShakeFadeOut);
+            RaiseTerminalDestroyed(this);
         }
+
+        // Terminal repaired
+        if (previousState == TerminalState.Repairing && state == TerminalState.Idle) RaiseTerminalRepaired(this);
 
         // Destroyed Particle Effect:
         if (state == TerminalState.Destroyed) destroyedEffect.Play();
@@ -302,6 +310,16 @@ public class TerminalController : MonoBehaviour
     private void StopExplosion()
     {
         explosionEffect.Stop();
+    }
+
+    void RaiseTerminalDestroyed(TerminalController terminal)
+    {
+        terminalDestroyed.Raise(this, terminal);
+    }
+
+    void RaiseTerminalRepaired(TerminalController terminal)
+    {
+        terminalRepaired.Raise(this, terminal);
     }
     #endregion
 

@@ -243,6 +243,8 @@ MonoBehaviour:
   repairSound: {fileID: 8300000, guid: 568b61aac5c10014082095c54b22f307, type: 3}
   explosionEffect: {fileID: 7648102516941839716}
   destroyedEffect: {fileID: 2973401737992251454}
+  terminalDestroyed: {fileID: 11400000, guid: f0ff9b40a9be33449b93abdde891fbb8, type: 2}
+  terminalRepaired: {fileID: 11400000, guid: 215f652bd17bdd4479f520af9e201d69, type: 2}
 --- !u!114 &6725877670284000509
 MonoBehaviour:
   m_ObjectHideFlags: 0
