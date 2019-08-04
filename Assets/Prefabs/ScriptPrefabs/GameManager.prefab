@@ -56,7 +56,7 @@ MonoBehaviour:
   player2: {fileID: 0}
   player3: {fileID: 0}
   score: {fileID: 11400000, guid: 91d2e9481b021d14a92fce2e9d0f1abc, type: 2}
-  maxDamagedTerminals: 3
+  maxDamagedTerminals: 2
 --- !u!114 &3428299392077098477
 MonoBehaviour:
   m_ObjectHideFlags: 0
