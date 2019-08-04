@@ -18,8 +18,6 @@ public class BalanceMinigame : Minigame
     [SerializeField]
     private float targetHoldTime = 1f;
     [SerializeField]
-    private float timeLimit = 5f;
-    [SerializeField]
     private Image buttonIcon;
     [SerializeField]
     private Image barCursor;
@@ -28,7 +26,6 @@ public class BalanceMinigame : Minigame
     // Private
     private string triggerUsed = null;
     private float currentHoldTime = 0f;
-    private float timer = 0f;
     #endregion
 
 
@@ -46,12 +43,13 @@ public class BalanceMinigame : Minigame
         base.Start();
 	}
 
-    private void Update()
+    protected override void Update()
     {
+        // Call base class:
+        base.Update();
+
         if (isRunning && triggerUsed != null)
         {
-            timer += Time.deltaTime;
-
             // Read value from trigger:
             float triggerValue = Input.GetAxis(triggerUsed);
             UpdateCursorPosition(triggerValue);
@@ -67,10 +65,6 @@ public class BalanceMinigame : Minigame
             // Check if finished:
             if (currentHoldTime >= targetHoldTime)
                 FinishMinigame(true);
-
-            // Check if time limit expired:
-            else if (timer > timeLimit)
-                FinishMinigame(false);
         }
     }
     #endregion
@@ -113,8 +107,6 @@ public class BalanceMinigame : Minigame
 
     private void UpdateCursorPosition(float triggerValue)
     {
-        Debug.Log("triggerValue: " + triggerValue);
-
         float cursorPosition = triggerValue * 2f;
         barCursor.rectTransform.anchoredPosition = new Vector2(0f, cursorPosition);
     }
@@ -126,7 +118,6 @@ public class BalanceMinigame : Minigame
 
         // Reset values:
         currentHoldTime = 0f;
-        timer = 0f;
     }
 
     protected override void RaiseMinigameSucceeded(TerminalController terminal, CharacterController player, int points)

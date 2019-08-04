@@ -15,15 +15,12 @@ public class ButtonPressMinigame : Minigame
     [SerializeField]
     private int numberOfButtons = 1;
     [SerializeField]
-    private float timeLimit = 5f;
-    [SerializeField]
     private Image[] buttonIcons;
     [SerializeField]
     private Vector3 buttonIconCheckedSize = new Vector3(0.6f, 0.6f, 1f);
     // Private
     private string[] buttonsToPress = null;
     private List<string> currentlyPressedButtons;
-    private float timer = 0f;
     private Vector3 buttonIconRegularSize;
     #endregion
 
@@ -45,12 +42,13 @@ public class ButtonPressMinigame : Minigame
         buttonIconRegularSize = buttonIcons[0].rectTransform.localScale;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        // Call base class:
+        base.Update();
+
         if (isRunning && buttonsToPress != null)
         {
-            timer += Time.deltaTime;
-
             // Check which of the desired buttons are pressed:
             foreach(string s in buttonsToPress)
             {
@@ -69,10 +67,6 @@ public class ButtonPressMinigame : Minigame
             // Check if all buttons have been pressed:
             if (currentlyPressedButtons.Count >= numberOfButtons)
                 FinishMinigame(true);
-
-            // Check if time limit expired:
-            else if (timer > timeLimit)
-                FinishMinigame(false);
         }
     }
     #endregion
@@ -103,9 +97,6 @@ public class ButtonPressMinigame : Minigame
             buttonIcons[i].sprite = inputController.GetInputIcon(buttonsToPress[i]);
             UncheckButtonIcon(buttonIcons[i]);
         }
-
-        // Start timer:
-        timer = 0f;
     }
     #endregion
 
