@@ -1452,6 +1452,7 @@ MonoBehaviour:
   player2Crown: {fileID: 7039712561012187253}
   player3Crown: {fileID: 9219421377688573871}
   buttonIcon: {fileID: 6181772639656410464}
+  pressStartText: {fileID: 6181772640173924517}
 --- !u!1 &6181772641134516053
 GameObject:
   m_ObjectHideFlags: 0
