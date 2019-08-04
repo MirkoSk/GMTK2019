@@ -26,16 +26,25 @@ public class Scores : ScriptableObject
     #region Public Properties
     public int ScorePlayer1 { get { return scorePlayer1; } set { scorePlayer1 = value; } }
     public int ScorePlayer2 { get { return scorePlayer2; } set { scorePlayer2 = value; } }
-    public int ScorePlayer3 { get { return scorePlayer2; } set { scorePlayer2 = value; } }
+    public int ScorePlayer3 { get { return scorePlayer3; } set { scorePlayer3 = value; } }
 
     public int ScoreGlobal { get { return scorePlayer1 + scorePlayer2 + scorePlayer3; } }
     public float TimeLeft { get { return timeLeft; } set { timeLeft = value; } }
     #endregion
 
 
+    #region Unity Event Functions
+
+    #endregion
+
 
     #region Public Functions
-
+    public void Initialize()
+    {
+        scorePlayer1 = 0;
+        scorePlayer2 = 0;
+        scorePlayer3 = 0;
+    }
     #endregion
 
 

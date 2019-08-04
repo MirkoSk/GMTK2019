@@ -56,12 +56,12 @@ MonoBehaviour:
   spriteRB: {fileID: 21300000, guid: dfcd6d6a9d26e674eb2e4090f579bc3c, type: 3}
   spriteSelect: {fileID: 21300000, guid: 92a95b8f74c3a2644b70326de8a72cf0, type: 3}
   spriteStart: {fileID: 21300000, guid: fb2d3b806f65bdc4cb0ca8fcc09fd172, type: 3}
-  spriteLeftStickButton: {fileID: 21300000, guid: 5e511d248330f714a9442c5b28b499b6,
+  spriteLeftStickButton: {fileID: 21300000, guid: c66bf1652191b5a44b1968f41ef5cb96,
     type: 3}
-  spriteRightStickButton: {fileID: 21300000, guid: 1adab2e4da019e547a1263e02dc994f8,
+  spriteRightStickButton: {fileID: 21300000, guid: ffb87d4f568a9364fb16505a3e464363,
     type: 3}
-  spriteLeftStick: {fileID: 21300000, guid: 5e511d248330f714a9442c5b28b499b6, type: 3}
-  spriteRightStick: {fileID: 21300000, guid: 1adab2e4da019e547a1263e02dc994f8, type: 3}
+  spriteLeftStick: {fileID: 21300000, guid: c66bf1652191b5a44b1968f41ef5cb96, type: 3}
+  spriteRightStick: {fileID: 21300000, guid: ffb87d4f568a9364fb16505a3e464363, type: 3}
   spriteDpad: {fileID: 21300000, guid: d98736815fbb30d42b000ef0bcfed903, type: 3}
   spriteLT: {fileID: 21300000, guid: 6cf502532640f034ca418f5d6c2c1207, type: 3}
   spriteRT: {fileID: 21300000, guid: c2135899980e35e49b5472137ccd538f, type: 3}

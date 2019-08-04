@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         gameTimer = gameLengh;
         InvokeRepeating("Tick", tickInterval, tickInterval);
+        score.Initialize();
     }
 #endregion
 
@@ -92,8 +93,9 @@ public class GameManager : MonoBehaviour
 #region Private Functions
     private void Tick()
     {
-        if (gameTimer <= 0)
+        if (Mathf.Floor(gameTimer) <= 0)
         {
+            RaiseGameTimerUpdated(gameTimer, gameLengh);
             RaiseGameOver(true);
         }
         else if (destroyedTerminals > maxDamagedTerminals)
