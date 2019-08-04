@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// Controls the game on a global Scale
+/// Timer for the Game
+/// Score Record
+/// Player-Scores (which Player repaired how much Terminals)
 /// </summary>
 public class GameManager : MonoBehaviour 
 {
-
-    /* This Class controls the game on a global Scale
-     * Timer for the Game
-     * Score Record
-     * Player-Scores (which Player repaired how much Terminals)
-     * 
-     */
-
-
 
     #region Variable Declarations
     // Serialized Fields
