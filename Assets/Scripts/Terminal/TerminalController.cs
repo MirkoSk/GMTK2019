@@ -250,7 +250,7 @@ public class TerminalController : MonoBehaviour
         // Add/Remove Terminal as camera target
         if (state == TerminalState.Error && previousState == TerminalState.Idle)
             MultipleTargetCamera.Instance.AddTarget(transform);
-        else if (state == TerminalState.Idle && previousState == TerminalState.Destroyed)
+        else if (state == TerminalState.Idle)
             MultipleTargetCamera.Instance.RemoveTarget(transform);
 
         // Explosion particle effect:
