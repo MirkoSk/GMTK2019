@@ -18,10 +18,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] float tickInterval = .1f;
     [SerializeField] GameEvent scoreUpdatedEvent;
     [SerializeField] GameEvent gameTimeUpdatedEvent;
+    [SerializeField] CharacterController player1;
+    [SerializeField] CharacterController player2;
+    [SerializeField] CharacterController player3;
+    [SerializeField] Scores score;
 
     // Private
     int globalScore = 0;
     float gameTimer;
+    
 
     #endregion
 
@@ -46,6 +51,17 @@ public class GameManager : MonoBehaviour
     #region Public Functions
     public void UpdateScore(TerminalController terminalController, CharacterController characterController, int points)
     {
+        if(characterController == player1)
+        {
+            score.ScorePlayer1 += points;
+        }else if(characterController == player2)
+        {
+            score.ScorePlayer2 += points;
+        }
+        else
+        {
+            score.ScorePlayer3 += points;
+        }
         globalScore += points;
         RaiseGlobalScoreUpdated(globalScore);
     }
@@ -59,6 +75,7 @@ public class GameManager : MonoBehaviour
     private void Tick()
     {
         gameTimer -= tickInterval;
+        score.TimeLeft = gameTimer;
         RaiseGameTimerUpdated(gameTimer, gameLengh);
     }
 
