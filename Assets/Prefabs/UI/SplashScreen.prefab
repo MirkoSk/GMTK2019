@@ -1192,3 +1192,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonIcon: {fileID: 6586818988184243503}
+  pressStartText: {fileID: 6586818987567108330}

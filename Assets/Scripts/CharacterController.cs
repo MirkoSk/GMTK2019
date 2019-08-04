@@ -102,6 +102,7 @@ public class CharacterController : MonoBehaviour
             verticalInput = 0;
             rigidbody.velocity = Vector2.zero;
             rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            UpdateThruster();
         }
         else
         {

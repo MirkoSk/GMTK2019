@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4efcc9f2bb966419f849f73c81b503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLengh: 600
+  gameLengh: 300
   tickInterval: 0.1
   scoreUpdatedEvent: {fileID: 11400000, guid: 6e58db168cf515b4c873e2bc0130b19b, type: 2}
   gameTimeUpdatedEvent: {fileID: 11400000, guid: ddef663ae7bdb9840ad5bbce3d4a42f1,
