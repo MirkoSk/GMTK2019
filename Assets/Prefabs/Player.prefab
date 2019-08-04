@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4491314103382933878}
-  - component: {fileID: 7988742265685132252}
+  - component: {fileID: 4495806970812836878}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Player
@@ -155,14 +155,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977062814531948788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.03, z: 0}
+  m_LocalScale: {x: 0.79624003, y: 0.79624003, z: 0.7962396}
   m_Children: []
   m_Father: {fileID: 5320852948765475230}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7988742265685132252
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!58 &4495806970812836878
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,7 +171,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1977062814531948788}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 072b09af16794e342af341c3c55be053, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 2855998635510720131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.86, y: 0.86, z: 0.86}
   m_Children:
   - {fileID: 3464528848591801952}
   m_Father: {fileID: 5320852948765475230}
