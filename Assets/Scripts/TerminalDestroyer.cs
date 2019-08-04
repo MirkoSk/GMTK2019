@@ -64,6 +64,7 @@ public class TerminalDestroyer : MonoBehaviour
                 terminals.Add(tempTerminals[number]);
                 tempTerminals[number].InvokeError();
                 tempTerminals.RemoveAt(number);
+                erroredAndDestroyedTerminals++;
             }
 
             activatedTerminals++;
@@ -113,8 +114,8 @@ public class TerminalDestroyer : MonoBehaviour
                 {
                     if (inputController.CheckUnusedInputs(terminal.LinkedMinigame.InputType, terminal.LinkedMinigame.InputNumber))
                     {
-                        terminal.InvokeError();
                         erroredAndDestroyedTerminals++;
+                        terminal.InvokeError();
                     }
                 }
             }
