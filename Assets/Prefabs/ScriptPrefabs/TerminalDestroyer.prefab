@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 149102680067780932}
   - component: {fileID: 149102680067780933}
   m_Layer: 0
-  m_Name: EventManager
+  m_Name: TerminalDestroyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03969053d971bf7448efddfc5f7d07ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyModifier:
-    minValue: 0.74754274
-    maxValue: 1.2451766
-  tickInterval: 2
+  maxErroredAndDestroyedTerminals: 6
+  tickInterval: 1
+  repetitionDampener: 0.4
+  terminalActivationInterval: 3
+  activationIntervalIncrease: 1
   inputController: {fileID: 0}
   spawnManager: {fileID: 0}
 --- !u!114 &149102680067780933

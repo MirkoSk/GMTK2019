@@ -43,6 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b932e5e3a0171cc4bbebbbd267e75e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfTerminals: 10
+  terminalPrefab: {fileID: 3344290510320166441, guid: 398f0805497194648bf3fe759013f915,
+    type: 3}
+  terminalTypes:
+  - TerminalType: {fileID: 11400000, guid: 4ca105b0c30446d4281ca68067d2850e, type: 2}
+    TimesToSpawn: 2
+  - TerminalType: {fileID: 11400000, guid: c4337ba5838595a459023fc18d0aed01, type: 2}
+    TimesToSpawn: 2
+  - TerminalType: {fileID: 11400000, guid: 7ac2af357feb172458e2749f61fdf3ab, type: 2}
+    TimesToSpawn: 2
+  - TerminalType: {fileID: 11400000, guid: 6bef6f6dc1ed9ab48ad555a6fc7ad410, type: 2}
+    TimesToSpawn: 10
+  - TerminalType: {fileID: 11400000, guid: 658baa7bcfb8354468578f1fc8dee1a9, type: 2}
+    TimesToSpawn: 2
+  - TerminalType: {fileID: 11400000, guid: 64be6b72f426a674090c0541a9be2d87, type: 2}
+    TimesToSpawn: 2
   terminalPositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -60,10 +76,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  terminalPrefabs:
-  - {fileID: 3344290510320166441, guid: 398f0805497194648bf3fe759013f915, type: 3}
-  numberOfTerminals: 10
+  fillerTerminal: {fileID: 11400000, guid: 6bef6f6dc1ed9ab48ad555a6fc7ad410, type: 2}
   miniGamePrefabs:
   - {fileID: 6235019308841095995, guid: 672aed57126d4b6449340c53e715345e, type: 3}
   - {fileID: 6235019308841095995, guid: 4e118bcc8dbdfc144a88071db49b8c67, type: 3}

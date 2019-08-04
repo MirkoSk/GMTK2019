@@ -7944,11 +7944,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4116664592924087645, guid: ce90fd0bd9713d94b86c6ea311a72fd7,
         type: 3}
-      propertyPath: terminalPositions.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4116664592924087645, guid: ce90fd0bd9713d94b86c6ea311a72fd7,
-        type: 3}
       propertyPath: terminalPositions.Array.data[0]
       value: 
       objectReference: {fileID: 60017508}
@@ -8027,11 +8022,6 @@ PrefabInstance:
       propertyPath: terminalPositions.Array.data[15]
       value: 
       objectReference: {fileID: 909373681}
-    - target: {fileID: 4116664592924087645, guid: ce90fd0bd9713d94b86c6ea311a72fd7,
-        type: 3}
-      propertyPath: terminalPositions.Array.data[16]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce90fd0bd9713d94b86c6ea311a72fd7, type: 3}
 --- !u!1001 &4495733201041842753
@@ -8215,7 +8205,7 @@ PrefabInstance:
     - target: {fileID: 149102680067780934, guid: 6c9e77df55d3e3d4a820485f72561635,
         type: 3}
       propertyPath: m_Name
-      value: EventManager
+      value: TerminalDestroyer
       objectReference: {fileID: 0}
     - target: {fileID: 149102680067780939, guid: 6c9e77df55d3e3d4a820485f72561635,
         type: 3}
