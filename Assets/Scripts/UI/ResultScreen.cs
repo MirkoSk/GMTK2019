@@ -42,12 +42,10 @@ public class ResultScreen : MonoBehaviour
     private Image player3Crown;
     [SerializeField]
     private Image buttonIcon;
-    // Private
-    /*private int totalScore;
-    private int player1Score;
-    private int player2Score;
-    private int player3Score;*/
+    [SerializeField]
+    private Text pressStartText;
 
+    // Private
     private bool iconSizeChanged = false;
     private bool inputAllowed = false;
     #endregion
@@ -66,6 +64,9 @@ public class ResultScreen : MonoBehaviour
         UpdateTime();
         UpdateScores();
         DisplayMvp();
+
+        buttonIcon.enabled = false;
+        pressStartText.enabled = false;
 
         Invoke("AllowInput", 2f);
         InvokeRepeating("ToggleIconSize", 0.6f, 0.6f);
@@ -95,7 +96,7 @@ public class ResultScreen : MonoBehaviour
             int seconds = Mathf.FloorToInt(scoreContainer.TimeLeft - minutes * 60f);
             string timeString = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-            remainingTimeText.text = timeString;
+            remainingTimeText.text = remainingTimePrefix + timeString;
         }
         else
             remainingTimeText.enabled = false;
@@ -136,6 +137,8 @@ public class ResultScreen : MonoBehaviour
 
     private void AllowInput()
     {
+        buttonIcon.enabled = true;
+        pressStartText.enabled = true;
         inputAllowed = true;
     }
 

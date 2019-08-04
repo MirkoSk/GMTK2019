@@ -14,6 +14,8 @@ public class SplashScreen : MonoBehaviour
     // Serialized Fields
     [SerializeField]
     private Image buttonIcon;
+    [SerializeField]
+    private Text pressStartText;
     
     // Private
     private bool iconSizeChanged = false;
@@ -31,6 +33,8 @@ public class SplashScreen : MonoBehaviour
     #region Unity Event Functions
     private void Start () 
 	{
+        buttonIcon.enabled = false;
+        pressStartText.enabled = false;
         Invoke("AllowInput", 2f);
         InvokeRepeating("ToggleIconSize", 0.6f, 0.6f);
     }
@@ -60,6 +64,8 @@ public class SplashScreen : MonoBehaviour
 
     private void AllowInput()
     {
+        buttonIcon.enabled = true;
+        pressStartText.enabled = true;
         inputAllowed = true;
     }
 
