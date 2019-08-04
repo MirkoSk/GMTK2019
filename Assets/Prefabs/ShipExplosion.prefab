@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a50b7fb2f0ef54f9d89ab7cd81680d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnitude: 4
+  roughness: 8
+  fadeInTime: 1
+  fadeOutTime: 10
   explosion: {fileID: 505491583878622570}
 --- !u!199 &505491583878622571
 ParticleSystemRenderer:
@@ -130,8 +134,8 @@ MonoBehaviour:
   linkedMethods:
   - component: {fileID: 5115359770509164540}
     methodID: 0
-    methodName: None
-    chosenID: 0
+    methodName: OnGameOver
+    chosenID: 1
     methodNames: []
     gameObject: {fileID: 505491583878622568}
   ignoreEventParameters: 0
