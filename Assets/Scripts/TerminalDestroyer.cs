@@ -23,6 +23,9 @@ public class TerminalDestroyer : MonoBehaviour
     [Tooltip("Time in seconds added each time a terminal is activated the first time.")]
     [SerializeField] float activationIntervalIncrease = 1.5f;
 
+    [Space]
+    [SerializeField] bool debug = false;
+
     [Header("References")]
     [SerializeField] InputController inputController = null;
     [SerializeField] SpawnManager spawnManager = null;
@@ -67,6 +70,7 @@ public class TerminalDestroyer : MonoBehaviour
                 erroredAndDestroyedTerminals++;
             }
 
+            Tick();
             activatedTerminals++;
             timer = 0f;
         }
@@ -114,6 +118,8 @@ public class TerminalDestroyer : MonoBehaviour
                 {
                     if (inputController.CheckUnusedInputs(terminal.LinkedMinigame.InputType, terminal.LinkedMinigame.InputNumber))
                     {
+                        if (debug) Debug.Log("Error invoked after " + terminal.TimerToFail + " seconds. MinValue: " + terminal.TimeToFail.minValue + " MaxValue: " + terminal.TimeToFail.maxValue, terminal);
+
                         erroredAndDestroyedTerminals++;
                         terminal.InvokeError();
                     }

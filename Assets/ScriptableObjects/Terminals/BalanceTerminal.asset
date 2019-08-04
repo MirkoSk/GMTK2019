@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BalanceTerminal
   m_EditorClassIdentifier: 
   TimeToFail:
-    minValue: 32.53804
-    maxValue: 57.242847
+    minValue: 17.474133
+    maxValue: 47.601948
   Minigame: {fileID: 6235019308841095995, guid: 4e118bcc8dbdfc144a88071db49b8c67,
     type: 3}

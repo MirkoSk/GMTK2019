@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxErroredAndDestroyedTerminals: 6
   tickInterval: 1
-  repetitionDampener: 0.35
+  repetitionDampener: 1
   terminalActivationInterval: 3
   activationIntervalIncrease: 1
   inputController: {fileID: 0}

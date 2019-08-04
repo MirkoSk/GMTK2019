@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeToFail:
     minValue: 18.679245
-    maxValue: 71.10164
+    maxValue: 60.255627
   Minigame: {fileID: 6235019308841095995, guid: d35d070110fc20440b86944c2fca2c8a,
     type: 3}
