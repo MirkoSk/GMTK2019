@@ -77,11 +77,11 @@ public class EventManager : MonoBehaviour
                 if (spawnManager.Terminals[i].TimerToFail > spawnManager.Terminals[i].TimeToFail.maxValue)
                     probability = 100f;
                 else
-                    probability = spawnManager.Terminals[i].TimerToFail.Remap(spawnManager.Terminals[i].TimeToFail.minValue, spawnManager.Terminals[i].TimeToFail.maxValue, 0f, 100f);
-                float temp = Random.Range(0f, 100f) * difficulty;
+                    probability = spawnManager.Terminals[i].TimerToFail.Remap(spawnManager.Terminals[i].TimeToFail.minValue, spawnManager.Terminals[i].TimeToFail.maxValue, 0f, 100f) * difficulty;
+                float temp = Random.Range(0f, 100f);
 
                 //TODO: If Probability is 100 and difficulty > 1 this probability >= 100 statement is meant for fail savety NOT FINAL
-                if (probability >= 100 || temp < probability)
+                if (temp < probability)
                 {
                     if (inputController.CheckUnusedInputs(spawnManager.Terminals[i].LinkedMinigame.InputType, spawnManager.Terminals[i].LinkedMinigame.InputNumber))
                     {

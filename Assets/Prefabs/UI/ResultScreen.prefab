@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8933726de37f1244889d63fa43b0467f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreContainer: {fileID: 0}
+  scoreContainer: {fileID: 11400000, guid: 91d2e9481b021d14a92fce2e9d0f1abc, type: 2}
   remainingTimePrefix: 'Remaining Time: '
   totalScorePrefix: 'Total Score: '
   headerSuccess:
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   headerFailure:
   - {fileID: 8602965548151915423}
   - {fileID: 4543677671677220535}
-  remainingTimeText: {fileID: 0}
+  remainingTimeText: {fileID: 7013412565461442751}
   totalScoreText: {fileID: 6181772639494117536}
   player1ScoreText: {fileID: 4974446092614674356}
   player2ScoreText: {fileID: 4999572038407807980}

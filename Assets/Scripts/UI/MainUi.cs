@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -127,7 +128,7 @@ public class MainUi : MonoBehaviour
         if (!IsInvoking("ToogleAlarmOverlay"))
         {
             CancelInvoke("ToggleAlarmOverlay");
-            InvokeRepeating("ToggleAlarmOverlay", 1f, 1f);
+            InvokeRepeating("ToggleAlarmOverlay", 0.75f, 0.75f);
             alarmOverlay.enabled = true;
         }
     }
@@ -153,7 +154,14 @@ public class MainUi : MonoBehaviour
             explosionOverlay.enabled = true;
             explosionOverlay.color = new Color(1f, 1f, 1f, 0f);
             explosionOverlay.DOColor(new Color(1f, 1f, 1f, 1f), 8f);
+
+            Invoke("LoadResultScreen", 9f);
         }
+    }
+
+    private void LoadResultScreen()
+    {
+        SceneManager.LoadScene(Constants.SCENE_OUTRO, LoadSceneMode.Single);
     }
     #endregion
 

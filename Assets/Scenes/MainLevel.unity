@@ -1324,6 +1324,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1754708749653242683, guid: 495dc0b7ae5ba0a4f94d0e45d1427e80,
+        type: 3}
+      propertyPath: linkedMethods.Array.data[0].methodName
+      value: OnGameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754708749653242683, guid: 495dc0b7ae5ba0a4f94d0e45d1427e80,
+        type: 3}
+      propertyPath: linkedMethods.Array.data[0].chosenID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 495dc0b7ae5ba0a4f94d0e45d1427e80, type: 3}
 --- !u!4 &1045184632 stripped
