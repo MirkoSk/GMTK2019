@@ -223,7 +223,7 @@ MonoBehaviour:
   TimeToFail:
     minValue: 10.488933
     maxValue: 60.000004
-  TimeToExplode: 10
+  TimeToExplode: 18
   DangerTime: 0.5
   LinkedMinigame: {fileID: 0}
   RepairMinigame: {fileID: 0}
