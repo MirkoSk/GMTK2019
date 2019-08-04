@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(AudioSource))]
 [SelectionBase]
 public class DoorController : MonoBehaviour 
 {
@@ -17,6 +18,7 @@ public class DoorController : MonoBehaviour
 
     // Private
     Animator animator = null;
+    AudioSource audioSource = null;
 	#endregion
 	
 	
@@ -31,6 +33,7 @@ public class DoorController : MonoBehaviour
 	private void Awake() 
 	{
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         animator.speed = playbackSpeed;
 	}
 
@@ -39,6 +42,7 @@ public class DoorController : MonoBehaviour
         if (collider.tag.Contains(Constants.TAG_PLAYER))
         {
             animator.SetTrigger("OpenDoor");
+            audioSource.Play();
         }
     }
 
@@ -47,6 +51,7 @@ public class DoorController : MonoBehaviour
         if (collider.tag.Contains(Constants.TAG_PLAYER))
         {
             animator.SetTrigger("CloseDoor");
+            audioSource.Play();
         }
     }
     #endregion
