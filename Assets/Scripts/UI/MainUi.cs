@@ -77,7 +77,7 @@ public class MainUi : MonoBehaviour
 
         // Display countdown during last 10 seconds:
         foreach (Text t in countdownText)
-            if (newTime <= 10f)
+            if (Mathf.Floor(newTime) <= 10f)
                 t.text = timeString;
             else
                 t.text = "";
@@ -97,7 +97,9 @@ public class MainUi : MonoBehaviour
 
     public void OnGameOver(bool successful)
     {
-        if (!successful)
+        if (successful)
+            LoadResultScreen();
+        else
             ActivateExplosionOverlay();
     }
     #endregion

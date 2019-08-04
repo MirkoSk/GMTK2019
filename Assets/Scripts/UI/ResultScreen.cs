@@ -48,6 +48,7 @@ public class ResultScreen : MonoBehaviour
     // Private
     private bool iconSizeChanged = false;
     private bool inputAllowed = false;
+    private float timeLimitMargin = 1f;
     #endregion
 
 
@@ -90,7 +91,7 @@ public class ResultScreen : MonoBehaviour
     #region Private Functions
     private void UpdateTime()
     {
-        if (scoreContainer.TimeLeft > 0f)
+        if (scoreContainer.TimeLeft > timeLimitMargin)
         {
             int minutes = Mathf.FloorToInt(scoreContainer.TimeLeft / 60f);
             int seconds = Mathf.FloorToInt(scoreContainer.TimeLeft - minutes * 60f);
@@ -102,12 +103,12 @@ public class ResultScreen : MonoBehaviour
             remainingTimeText.enabled = false;
 
         foreach (Text t in headerSuccess)
-            if (scoreContainer.TimeLeft > 0f)
+            if (scoreContainer.TimeLeft > timeLimitMargin)
                 t.enabled = false;
             else
                 t.enabled = true;
         foreach (Text t in headerFailure)
-            if (scoreContainer.TimeLeft > 0f)
+            if (scoreContainer.TimeLeft > timeLimitMargin)
                 t.enabled = true;
             else
                 t.enabled = false;

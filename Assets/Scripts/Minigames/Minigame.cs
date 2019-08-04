@@ -77,7 +77,6 @@ public abstract class Minigame : MonoBehaviour
             timerUi.fillAmount = 1f - (timer / timeLimit);
             if (timer >= timeLimit)
                 FinishMinigame(false);
-            Debug.Log(timer + " / " + timeLimit);
         }
     }
 	#endregion
