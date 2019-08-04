@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b64b616db58ac4bb8d7aef4ca5496f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsWhenSucceeded: 100
-  timePenaltyWhenFailed: 1
+  pointsWhenSucceeded: 0
+  timePenaltyWhenFailed: 0
   inputType: 0
   inputNumber: 1
   minigameUi: {fileID: 5572031041751261468}
@@ -376,8 +376,6 @@ MonoBehaviour:
     type: 2}
   minigameFailedEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056,
     type: 2}
-  successSound: {fileID: 0}
-  failSound: {fileID: 0}
   buttonIcon: {fileID: 8466949875449320842}
   progressBar: {fileID: 3753011417175487528}
   failWhenButtonReleased: 1

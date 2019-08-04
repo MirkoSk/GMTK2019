@@ -70,6 +70,12 @@ public class TerminalController : MonoBehaviour
 
 
     #region Unity Event Functions
+    private void Start()
+    {
+        // Random rotation for explosion effect:
+        explosionEffect.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+    }
+
     private void Update()
     {
         switch (terminalState)
