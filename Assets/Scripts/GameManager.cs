@@ -25,12 +25,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Scores score;
     [Tooltip("How many Terminals can go woosh before the Game ends?")]
     [SerializeField] int maxDamagedTerminals = 3;
-    [SerializeField] EventManager eventManager;
 
     // Private
     int globalScore = 0;
     float gameTimer;
-    
+    int destroyedTerminals = 0;
 
     #endregion
 
@@ -70,7 +69,15 @@ public class GameManager : MonoBehaviour
         RaiseGlobalScoreUpdated(globalScore);
     }
 
+    public void TerminalDestroyed()
+    {
+        destroyedTerminals++;
+    }
 
+    public void TerminalRepaired()
+    {
+        destroyedTerminals--;
+    }
     #endregion
 
 
@@ -82,7 +89,7 @@ public class GameManager : MonoBehaviour
         {
             RaiseGameOver(true);
         }
-        else if (eventManager.ErroredTerminals > maxDamagedTerminals)
+        else if (destroyedTerminals > maxDamagedTerminals)
         {
             RaiseGameOver(false);
         }

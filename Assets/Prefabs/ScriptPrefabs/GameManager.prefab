@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3428299392077098387}
   - component: {fileID: 3428299392077098386}
   - component: {fileID: 3428299392077098477}
+  - component: {fileID: 5697659918483080994}
+  - component: {fileID: 4806463675073269974}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -55,7 +57,6 @@ MonoBehaviour:
   player3: {fileID: 0}
   score: {fileID: 11400000, guid: 91d2e9481b021d14a92fce2e9d0f1abc, type: 2}
   maxDamagedTerminals: 3
-  eventManager: {fileID: 0}
 --- !u!114 &3428299392077098477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,3 +83,65 @@ MonoBehaviour:
     methodNames: []
     gameObject: {fileID: 3428299392077098476}
   ignoreEventParameters: 0
+--- !u!114 &5697659918483080994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428299392077098476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f0ff9b40a9be33449b93abdde891fbb8, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3428299392077098386}
+        m_MethodName: TerminalDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods: []
+  ignoreEventParameters: 1
+--- !u!114 &4806463675073269974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428299392077098476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93699695a00d6e45b8b2d8e9668f03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 215f652bd17bdd4479f520af9e201d69, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3428299392077098386}
+        m_MethodName: TerminalRepaired
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  linkedMethods: []
+  ignoreEventParameters: 1
