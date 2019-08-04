@@ -18,10 +18,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] float tickInterval = .1f;
     [SerializeField] GameEvent scoreUpdatedEvent;
     [SerializeField] GameEvent gameTimeUpdatedEvent;
+    [SerializeField] GameEvent gameOverEvent;
     [SerializeField] CharacterController player1;
     [SerializeField] CharacterController player2;
     [SerializeField] CharacterController player3;
     [SerializeField] Scores score;
+    [Tooltip("How many Terminals can go woosh before the Game ends?")]
+    [SerializeField] int maxDamagedTerminals = 3;
+    [SerializeField] EventManager eventManager;
 
     // Private
     int globalScore = 0;
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour
         RaiseGlobalScoreUpdated(globalScore);
     }
 
-    
+
     #endregion
 
 
@@ -74,6 +78,14 @@ public class GameManager : MonoBehaviour
     #region Private Functions
     private void Tick()
     {
+        if (gameTimer <= 0)
+        {
+            RaiseGameOver(true);
+        }
+        else if (eventManager.ErroredTerminals > maxDamagedTerminals)
+        {
+            RaiseGameOver(false);
+        }
         gameTimer -= tickInterval;
         score.TimeLeft = gameTimer;
         RaiseGameTimerUpdated(gameTimer, gameLengh);
@@ -87,6 +99,11 @@ public class GameManager : MonoBehaviour
     private void RaiseGlobalScoreUpdated(int newScore)
     {
         scoreUpdatedEvent.Raise(this, newScore);
+    }
+
+    private void RaiseGameOver(bool successful)
+    {
+        gameOverEvent.Raise(this, successful);
     }
     #endregion
 

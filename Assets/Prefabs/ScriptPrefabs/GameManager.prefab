@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428299392077098476}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -49,6 +49,13 @@ MonoBehaviour:
   scoreUpdatedEvent: {fileID: 11400000, guid: 6e58db168cf515b4c873e2bc0130b19b, type: 2}
   gameTimeUpdatedEvent: {fileID: 11400000, guid: ddef663ae7bdb9840ad5bbce3d4a42f1,
     type: 2}
+  gameOverEvent: {fileID: 11400000, guid: b6b47b19eff7b9b45a4912bbb34c4d7e, type: 2}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  score: {fileID: 11400000, guid: 91d2e9481b021d14a92fce2e9d0f1abc, type: 2}
+  maxDamagedTerminals: 3
+  eventManager: {fileID: 0}
 --- !u!114 &3428299392077098477
 MonoBehaviour:
   m_ObjectHideFlags: 0

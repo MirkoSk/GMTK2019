@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -130,6 +131,7 @@ public class ResultScreen : MonoBehaviour
     private void Continue()
     {
         // TODO
+        SceneManager.LoadScene(Constants.SCENE_TITLE, LoadSceneMode.Single);
     }
 
     private void AllowInput()

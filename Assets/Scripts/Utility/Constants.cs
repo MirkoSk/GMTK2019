@@ -34,11 +34,10 @@ public class Constants
     #endregion
 
     #region Scenes
-    public static readonly string SCENE_TITLE = "TitleScreen";
-    public static readonly string SCENE_MAIN_MENU = "MainMenu";
-    public static readonly string SCENE_INTRO = "Intro";
-    public static readonly string SCENE_CREDITS = "Credits";
-    public static readonly string SCENE_LEVEL01 = "Level01";
+    public static readonly string SCENE_TITLE = "SplashScreen";
+    public static readonly string SCENE_OUTRO = "ResultScreen";
+    public static readonly string SCENE_UI = "MainUi";
+    public static readonly string SCENE_LEVEL = "MainLevel";
     #endregion
 
     #region Audio

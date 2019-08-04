@@ -30,7 +30,7 @@ public class EventManager : MonoBehaviour
 	
 	
 	#region Public Properties
-	
+	public int ErroredTerminals { get { return erroredTerminals; } }
 	#endregion
 	
 	

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -13,6 +14,7 @@ public class SplashScreen : MonoBehaviour
     // Serialized Fields
     [SerializeField]
     private Image buttonIcon;
+    
     // Private
     private bool iconSizeChanged = false;
     private bool inputAllowed = false;
@@ -52,6 +54,8 @@ public class SplashScreen : MonoBehaviour
     private void StartGame()
     {
         // TODO
+        SceneManager.LoadScene(Constants.SCENE_LEVEL, LoadSceneMode.Single);
+        SceneManager.LoadScene(Constants.SCENE_UI, LoadSceneMode.Additive);
     }
 
     private void AllowInput()
