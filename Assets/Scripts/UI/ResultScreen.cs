@@ -6,14 +6,37 @@ using UnityEngine.UI;
 /// <summary>
 /// 
 /// </summary>
-public class SplashScreen : MonoBehaviour 
+public class ResultScreen : MonoBehaviour 
 {
 
     #region Variable Declarations
     // Serialized Fields
+    [Header("Settings")]
+    [SerializeField]
+    private string totalScorePrefix = "Total Score: ";
+    [Header("UI References")]
+    [SerializeField]
+    private Text totalScoreText;
+    [SerializeField]
+    private Text player1ScoreText;
+    [SerializeField]
+    private Text player2ScoreText;
+    [SerializeField]
+    private Text player3ScoreText;
+    [SerializeField]
+    private Image player1Crown;
+    [SerializeField]
+    private Image player2Crown;
+    [SerializeField]
+    private Image player3Crown;
     [SerializeField]
     private Image buttonIcon;
     // Private
+    private int totalScore;
+    private int player1Score;
+    private int player2Score;
+    private int player3Score;
+
     private bool iconSizeChanged = false;
     private bool inputAllowed = false;
     #endregion
@@ -36,7 +59,7 @@ public class SplashScreen : MonoBehaviour
     public void Update()
     {
         if (inputAllowed && Input.GetButtonDown(Constants.INPUT_A))
-            StartGame();
+            Continue();
     }
     #endregion
 
@@ -49,7 +72,18 @@ public class SplashScreen : MonoBehaviour
 
 
     #region Private Functions
-    private void StartGame()
+    private void UpdateScores()
+    {
+        // TODO
+    }
+
+    private void DisplayMvp()
+    {
+        int highscore = Mathf.Max(player1Score, player2Score, player3Score);
+        // TODO
+    }
+
+    private void Continue()
     {
         // TODO
     }

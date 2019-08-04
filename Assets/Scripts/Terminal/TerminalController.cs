@@ -24,6 +24,9 @@ public class TerminalController : MonoBehaviour
     [MinMaxRange(1f, 60f)]
     public RangedFloat TimeToFail = new RangedFloat();
     public float TimeToExplode = 10f;
+    [Tooltip("When the warning should appear that the terminal is about to explode. Given as percentage of TimeToExplode.")]
+    [Range(0f, 1f)]
+    public float DangerTime = 0.5f;
     public Minigame LinkedMinigame = null;
     public Minigame RepairMinigame = null;
 
@@ -57,6 +60,7 @@ public class TerminalController : MonoBehaviour
     // Private
     private float timerToFail = 0f;
     private float timerToExplode = 0f;
+    private bool dangerWarningSend = false;
 	#endregion
 	
 	
@@ -85,9 +89,16 @@ public class TerminalController : MonoBehaviour
                 break;
 
             case TerminalState.Error:
+                if (dangerWarningSend == false && timerToExplode >= TimeToExplode * DangerTime)
+                {
+                    terminalUi.ActivateDangerMode();
+                    dangerWarningSend = true;
+                }
+
                 if (timerToExplode >= TimeToExplode)
                 {
                     timerToExplode = 0f;
+                    dangerWarningSend = false;
                     ChangeState(TerminalState.Destroyed);
                 }
 
@@ -175,6 +186,7 @@ public class TerminalController : MonoBehaviour
 
         player.SetMovable(true);
         timerToExplode = 0f;
+        dangerWarningSend = false;
         ChangeState(TerminalState.Idle);
     }
 
@@ -250,7 +262,7 @@ public class TerminalController : MonoBehaviour
         // Add/Remove Terminal as camera target
         if (state == TerminalState.Error && previousState == TerminalState.Idle)
             MultipleTargetCamera.Instance.AddTarget(transform);
-        else if (state == TerminalState.Idle && previousState == TerminalState.Destroyed)
+        else if (state == TerminalState.Idle)
             MultipleTargetCamera.Instance.RemoveTarget(transform);
 
         // Explosion particle effect:
