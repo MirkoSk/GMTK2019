@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-8118310689827486717
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Doors
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 0c253104859070b468a763773b663d6b
+  m_Children: []
+  m_Volume: 9d4e35ac17088954f8d6132aa6862d48
+  m_Pitch: 7f558dce22c22ac49a558405ac9b57ff
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -371743812293171592}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-5912269925436099319
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -42,6 +61,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-371743812293171592
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bc379eeef56a46249ae7a841230a4545
+  m_EffectName: Attenuation
+  m_MixLevel: 8630616996ab04246abb2e8a64c28ede
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -64,6 +97,7 @@ AudioMixerController:
     - 5719e284e5e011040aefcb31bd1f2387
     - 8c9ce6316d346d64bbfb3e60952e54e4
     - 8bcac3deff0aa844aae951949b2831e6
+    - 0c253104859070b468a763773b663d6b
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -111,7 +145,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 32830dc605c8e1243951a8390aa9ee74
-  m_FloatValues: {}
+  m_FloatValues:
+    9d4e35ac17088954f8d6132aa6862d48: -2.2889848
   m_TransitionOverrides: {}
 --- !u!243 &1196003080594237438
 AudioMixerGroupController:
@@ -143,6 +178,7 @@ AudioMixerGroupController:
   m_GroupID: 5719e284e5e011040aefcb31bd1f2387
   m_Children:
   - {fileID: 9169697141200999441}
+  - {fileID: -8118310689827486717}
   m_Volume: acb6cb7ee10094a41bdd9a9e335a8dc2
   m_Pitch: bd9ad65c4081551478c30ee4fd10c8b2
   m_Send: 00000000000000000000000000000000

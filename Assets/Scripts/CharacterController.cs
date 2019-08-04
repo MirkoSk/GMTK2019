@@ -21,6 +21,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] Transform playerSprite = null;
     [SerializeField] PlayerUi playerUi = null;
     [SerializeField] ParticleSystem stunnedEffect = null;
+    [SerializeField] Transform thrusterPivot = null;
     
     // Private Variables
     // Movement
@@ -149,6 +150,8 @@ public class CharacterController : MonoBehaviour
             rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, acceleration * Time.deltaTime);
         else
             rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, targetVelocity, deceleration * Time.deltaTime);
+
+        UpdateThruster();
     }
 
     private void RotateCharacter()
@@ -156,6 +159,14 @@ public class CharacterController : MonoBehaviour
         if (rigidbody.velocity.magnitude <= 0.01f) return;
 
         playerSprite.rotation = Quaternion.LookRotation(Vector3.forward, rigidbody.velocity);
+    }
+
+    void UpdateThruster()
+    {
+        float stretch = rigidbody.velocity.magnitude;
+        stretch.Remap(0f, 1.4f, 0f, 1f);
+
+        thrusterPivot.localScale = new Vector3(thrusterPivot.localScale.x, stretch, thrusterPivot.localScale.z);
     }
     #endregion
 
