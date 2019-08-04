@@ -685,7 +685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Keep the ship intact for 5 minutes to reach your destination.
+  m_Text: Keep the ship intact for five minutes to reach your destination.
 --- !u!1 &6586818988871444250
 GameObject:
   m_ObjectHideFlags: 0

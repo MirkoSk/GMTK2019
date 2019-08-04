@@ -41,8 +41,11 @@ public class KeepPressedMinigame : Minigame
         base.Start();
 	}
 
-    private void Update()
+    protected override void Update()
     {
+        // Call base class:
+        base.Update();
+
         if (isRunning && buttonToPress != null)
         {
             // Count time that button has been pressed:

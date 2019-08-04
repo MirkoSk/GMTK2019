@@ -15,8 +15,6 @@ public class AlternatingMasherMinigame : Minigame
     [SerializeField]
     private int targetPresses = 20;
     [SerializeField]
-    private float timeLimit = 5f;
-    [SerializeField]
     private Image buttonIcon1;
     [SerializeField]
     private Image buttonIcon2;
@@ -25,7 +23,6 @@ public class AlternatingMasherMinigame : Minigame
     private string buttonToPress2 = null;
     private string currentButton = null;
     private int currentButtonPresses = 0;
-    private float timer = 0f;
     private bool iconSizeChanged = false;
     #endregion
 
@@ -46,12 +43,13 @@ public class AlternatingMasherMinigame : Minigame
         InvokeRepeating("ToggleIconSize", 0.15f, 0.15f);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        // Call base class:
+        base.Update();
+
         if (isRunning && buttonToPress1 != null && buttonToPress2 != null)
         {
-            timer += Time.deltaTime;
-
             // Count button presses:
             if (Input.GetButtonDown(currentButton))
             {
@@ -65,10 +63,6 @@ public class AlternatingMasherMinigame : Minigame
                 else
                     currentButton = currentButton == buttonToPress1 ? buttonToPress2 : buttonToPress1;
             }
-
-            // Check if time limit expired:
-            else if (timer > timeLimit)
-                FinishMinigame(false);
         }
     }
     #endregion
@@ -103,9 +97,6 @@ public class AlternatingMasherMinigame : Minigame
 
         // Reset press counter:
         currentButtonPresses = 0;
-
-        // Start timer:
-        timer = 0f;
     }
     #endregion
 

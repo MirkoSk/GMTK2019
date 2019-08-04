@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -15,6 +16,8 @@ public abstract class Minigame : MonoBehaviour
     private int pointsWhenSucceeded = 100;
     [SerializeField]
     private float timePenaltyWhenFailed = 1f;
+    [SerializeField]
+    private float timeLimit = 5f;
     [Header("Necessary Buttons")]
     [SerializeField]
     private InputType inputType = InputType.BUTTON;
@@ -23,22 +26,20 @@ public abstract class Minigame : MonoBehaviour
     [Header("Minigame UI")]
     [SerializeField]
     private Canvas minigameUi;
+    [SerializeField]
+    private Image timerUi;
     [Header("Game Events")]
     [SerializeField]
     protected GameEvent minigameSucceededEvent;
     [SerializeField]
     protected GameEvent minigameFailedEvent;
-    /*[Header("Sounds")]
-    [SerializeField]
-    private AudioClip successSound;
-    [SerializeField]
-    private AudioClip failSound;*/
 
     // Private
     private TerminalController terminal = null;
     private CharacterController player = null;
     protected InputController inputController;
     protected bool isRunning = false;
+    private float timer = 0f;
 	#endregion
 	
 	
@@ -66,6 +67,19 @@ public abstract class Minigame : MonoBehaviour
         minigameUi.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
         minigameUi.enabled = false;
 	}
+
+    protected virtual void Update()
+    {
+        // Check if time limit expired:
+        if (isRunning)
+        {
+            timer += Time.deltaTime;
+            timerUi.fillAmount = 1f - (timer / timeLimit);
+            if (timer >= timeLimit)
+                FinishMinigame(false);
+            Debug.Log(timer + " / " + timeLimit);
+        }
+    }
 	#endregion
 	
 	
@@ -75,11 +89,15 @@ public abstract class Minigame : MonoBehaviour
     {
         // Remember terminal that started the minigame:
         this.terminal = terminal;
+
         // Remember player playing the minigame:
         this.player = player;
 
         // Display UI:
         minigameUi.enabled = true;
+
+        // Start timer:
+        timer = 0f;
 
         // Start minigame:
         isRunning = true;
@@ -93,6 +111,9 @@ public abstract class Minigame : MonoBehaviour
     {
         // Cancel minigame:
         isRunning = false;
+
+        // Reset timer:
+        timer = 0f;
 
         // Hide UI:
         minigameUi.enabled = false;
