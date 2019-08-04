@@ -55,11 +55,16 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("Tick", tickInterval, tickInterval);
         score.Initialize();
     }
-#endregion
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+    }
+    #endregion
 
 
 
-#region Public Functions
+    #region Public Functions
     public void UpdateScore(TerminalController terminalController, CharacterController characterController, int points)
     {
         if(characterController == player1)
