@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
     {
         if (Mathf.Floor(gameTimer) <= 0)
         {
+            RaiseGameTimerUpdated(gameTimer, gameLengh);
             RaiseGameOver(true);
         }
         else if (destroyedTerminals > maxDamagedTerminals)
