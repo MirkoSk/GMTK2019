@@ -37,6 +37,7 @@ public class TerminalUi : MonoBehaviour
     private void Awake () 
 	{
         HideWarning();
+        HideDanger();
         HideDestroyed();
 
         // Warning sign animations:
