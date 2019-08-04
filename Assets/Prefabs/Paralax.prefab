@@ -60,8 +60,8 @@ MonoBehaviour:
     minValue: 0.3253151
     maxValue: 0.5594835
   spawnInterval:
-    minValue: 0.63510644
-    maxValue: 0.96710736
+    minValue: 0.24162352
+    maxValue: 0.47525412
   spawnPositionYAxis:
     minValue: -2.9511218
     maxValue: 2.9674144
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed:
-    minValue: 2.2133412
-    maxValue: 3.5044568
+    minValue: 1.5677834
+    maxValue: 3.0663996
   starPrefabs:
   - {fileID: 8961006473053499344, guid: c859aa811e433034d8d7fe6818f2bf2c, type: 3}
   - {fileID: 2178375936091663020, guid: 31eedb1db310eb64a9567adf3cec0243, type: 3}
@@ -126,10 +126,10 @@ MonoBehaviour:
   - {fileID: 9051068695377040185, guid: 88c96c2ab77e75b4fad88b5fb0b5fe8a, type: 3}
   sizeModifier:
     minValue: 0.633569
-    maxValue: 1.3221636
+    maxValue: 0.9455881
   spawnInterval:
-    minValue: 0.08607439
-    maxValue: 0.36888975
+    minValue: 0.4260688
+    maxValue: 0.8072547
   spawnPositionYAxis:
     minValue: -2.9511218
     maxValue: 2.9511218
@@ -196,8 +196,8 @@ MonoBehaviour:
     minValue: 0.63733476
     maxValue: 1.1430222
   spawnInterval:
-    minValue: 0.34429756
-    maxValue: 0.6640022
+    minValue: 0.23363048
+    maxValue: 0.5533353
   spawnPositionYAxis:
     minValue: -2.9511218
     maxValue: 2.9511218
