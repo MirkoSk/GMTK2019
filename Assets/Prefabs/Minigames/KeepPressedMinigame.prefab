@@ -607,7 +607,7 @@ MonoBehaviour:
   buttonIcon: {fileID: 8466949875449320842}
   progressBar: {fileID: 3753011417175487528}
   failWhenButtonReleased: 1
-  targetHoldTime: 5
+  targetHoldTime: 8
 --- !u!1 &7228676686693836038
 GameObject:
   m_ObjectHideFlags: 0

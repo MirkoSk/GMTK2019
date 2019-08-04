@@ -445,7 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsWhenSucceeded: 100
   timePenaltyWhenFailed: 1
-  timeLimit: 2
+  timeLimit: 1.5
   inputType: 0
   inputNumber: 1
   minigameUi: {fileID: 5572031041751261468}
