@@ -32,12 +32,19 @@ public class Scores : ScriptableObject
     public float TimeLeft { get { return timeLeft; } set { timeLeft = value; } }
     #endregion
 
+
     #region Unity Event Functions
 
     #endregion
 
-    #region Public Functions
 
+    #region Public Functions
+    public void Initialize()
+    {
+        scorePlayer1 = 0;
+        scorePlayer2 = 0;
+        scorePlayer3 = 0;
+    }
     #endregion
 
 

@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         gameTimer = gameLengh;
         InvokeRepeating("Tick", tickInterval, tickInterval);
+        score.Initialize();
     }
 #endregion
 
