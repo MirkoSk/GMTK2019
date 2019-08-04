@@ -42,16 +42,23 @@ public class GameManager : MonoBehaviour
 
 
     #region Unity Event Functions
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+#endif
+    }
     private void Start()
     {
         gameTimer = gameLengh;
         InvokeRepeating("Tick", tickInterval, tickInterval);
     }
-    #endregion
+#endregion
 
 
 
-    #region Public Functions
+#region Public Functions
     public void UpdateScore(TerminalController terminalController, CharacterController characterController, int points)
     {
         if(characterController == player1)
@@ -78,11 +85,11 @@ public class GameManager : MonoBehaviour
     {
         destroyedTerminals--;
     }
-    #endregion
+#endregion
 
 
 
-    #region Private Functions
+#region Private Functions
     private void Tick()
     {
         if (gameTimer <= 0)
@@ -112,12 +119,12 @@ public class GameManager : MonoBehaviour
     {
         gameOverEvent.Raise(this, successful);
     }
-    #endregion
+#endregion
 
 
 
-    #region Coroutines
+#region Coroutines
 
-    #endregion
+#endregion
 }
 
