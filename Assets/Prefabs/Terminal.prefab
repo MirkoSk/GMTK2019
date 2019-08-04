@@ -227,6 +227,8 @@ MonoBehaviour:
   RepairMinigame: {fileID: 0}
   StunDuration: 2
   StunForce: 0.2
+  cameraShakeFadeIn: 0.1
+  cameraShakeFadeOut: 2
   terminalState: 0
   debug: 0
   triggerController: {fileID: 214745742617542117}

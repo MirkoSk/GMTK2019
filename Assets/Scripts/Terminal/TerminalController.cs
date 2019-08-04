@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
+using EZCameraShake;
 
 /// <summary>
 /// 
@@ -27,9 +27,13 @@ public class TerminalController : MonoBehaviour
     public Minigame LinkedMinigame = null;
     public Minigame RepairMinigame = null;
 
-    [Space]
+    [Header("OnFail")]
     public float StunDuration = 3f;
     public float StunForce = 1f;
+
+    [Header("OnExplosion")]
+    public float cameraShakeFadeIn = 0.1f;
+    public float cameraShakeFadeOut = 1f;
 
     [Header("Terminal State")]
     [SerializeField] TerminalState terminalState = TerminalState.Idle;
@@ -242,6 +246,7 @@ public class TerminalController : MonoBehaviour
         {
             explosionEffect.Play();
             Invoke("StopExplosion", 1f);
+            CameraShaker.Instance.ShakeOnce(CameraShakePresets.Explosion.Magnitude, CameraShakePresets.Explosion.Roughness, cameraShakeFadeIn, cameraShakeFadeOut);
         }
 
         // Play sounds:
