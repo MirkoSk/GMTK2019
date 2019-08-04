@@ -17,9 +17,12 @@ public class TerminalUi : MonoBehaviour
     private Image warningIcon;
     [SerializeField]
     private Image dangerIcon;
+    [SerializeField]
+    private Image destroyedIcon;
     // Private
-    private bool warningIconSizeChanged;
-    private bool destroyedIconSizeChanged;
+    private bool warningIconSizeChanged = false;
+    private bool dangerIconSizeChanged = false;
+    private bool destroyedIconSizeChanged = false;
     #endregion
 
 
@@ -38,7 +41,8 @@ public class TerminalUi : MonoBehaviour
 
         // Warning sign animations:
         InvokeRepeating("ToggleWarningIconSize", 0.3f, 0.3f);
-        InvokeRepeating("ToggleDestroyedIconSize", 0.15f, 0.15f);
+        InvokeRepeating("ToggleDangerIconSize", 0.15f, 0.15f);
+        InvokeRepeating("ToggleDestroyedIconSize", 0.6f, 0.6f);
     }
 
     private void Start()
@@ -57,25 +61,37 @@ public class TerminalUi : MonoBehaviour
         {
             case TerminalController.TerminalState.Idle:
                 HideWarning();
+                HideDanger();
                 HideDestroyed();
                 break;
             case TerminalController.TerminalState.Error:
                 DisplayWarning();
+                HideDanger();
                 HideDestroyed();
                 break;
             case TerminalController.TerminalState.Fixing:
                 HideWarning();
+                HideDanger();
                 HideDestroyed();
                 break;
             case TerminalController.TerminalState.Destroyed:
                 HideWarning();
+                HideDanger();
                 DisplayDestroyed();
                 break;
             case TerminalController.TerminalState.Repairing:
                 HideWarning();
+                HideDanger();
                 HideDestroyed();
                 break;
         }
+    }
+
+    public void ActivateDangerMode()
+    {
+        HideWarning();
+        DisplayDanger();
+        HideDestroyed();
     }
     #endregion
 
@@ -89,11 +105,18 @@ public class TerminalUi : MonoBehaviour
         warningIcon.rectTransform.localScale = newSize;
     }
 
+    private void ToggleDangerIconSize()
+    {
+        Vector2 newSize = dangerIconSizeChanged ? new Vector2(1f, 1f) : new Vector2(0.85f, 0.85f);
+        dangerIconSizeChanged = !dangerIconSizeChanged;
+        dangerIcon.rectTransform.localScale = newSize;
+    }
+
     private void ToggleDestroyedIconSize()
     {
         Vector2 newSize = destroyedIconSizeChanged ? new Vector2(1f, 1f) : new Vector2(0.85f, 0.85f);
         destroyedIconSizeChanged = !destroyedIconSizeChanged;
-        dangerIcon.rectTransform.localScale = newSize;
+        destroyedIcon.rectTransform.localScale = newSize;
     }
 
     private void DisplayWarning()
@@ -106,14 +129,24 @@ public class TerminalUi : MonoBehaviour
         warningIcon.enabled = false;
     }
 
-    private void DisplayDestroyed()
+    private void DisplayDanger()
     {
         dangerIcon.enabled = true;
     }
 
-    private void HideDestroyed()
+    private void HideDanger()
     {
         dangerIcon.enabled = false;
+    }
+
+    private void DisplayDestroyed()
+    {
+        destroyedIcon.enabled = true;
+    }
+
+    private void HideDestroyed()
+    {
+        destroyedIcon.enabled = false;
     }
     #endregion
 
@@ -123,4 +156,3 @@ public class TerminalUi : MonoBehaviour
 
     #endregion
 }
-
