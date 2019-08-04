@@ -302,7 +302,7 @@ MonoBehaviour:
   minigameFailedEvent: {fileID: 11400000, guid: d1c6e139f6cd2f2438bab47f70b1d056,
     type: 2}
   numberOfButtons: 2
-  timeLimit: 5
+  timeLimit: 2.5
   buttonIcons:
   - {fileID: 8466949875449320842}
   - {fileID: 4750065895502212201}
