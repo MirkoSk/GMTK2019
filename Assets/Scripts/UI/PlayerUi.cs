@@ -78,7 +78,7 @@ public class PlayerUi : MonoBehaviour
 
     private void ToggleIconSize()
     {
-        Vector2 newSize = iconSizeChanged ? new Vector2(0.8f, 0.8f) : new Vector2(0.6f, 0.6f);
+        Vector2 newSize = iconSizeChanged ? new Vector2(1.6f, 1.6f) : new Vector2(1.2f, 1.2f);
         iconSizeChanged = !iconSizeChanged;
         axisImage.rectTransform.localScale = newSize;
     }
