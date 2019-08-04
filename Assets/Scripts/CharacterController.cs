@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     [Header("References")]
     [SerializeField] Transform playerSprite = null;
     [SerializeField] PlayerUi playerUi = null;
+    [SerializeField] ParticleSystem stunnedEffect = null;
     
     // Private Variables
     // Movement
@@ -74,6 +75,7 @@ public class CharacterController : MonoBehaviour
             stunTimer += Time.deltaTime;
             if (stunTimer >= stunTime)
             {
+                stunnedEffect.Stop();
                 SetMovable(true);
                 stunTime = 0f;
                 stunTimer = 0f;
@@ -118,6 +120,7 @@ public class CharacterController : MonoBehaviour
 
     public void Stun(float duration, float force, Vector3 direction)
     {
+        stunnedEffect.Play();
         transform.Translate(direction * force);
         SetMovable(false);
         stunTime = duration;

@@ -56,6 +56,7 @@ public class TerminalController : MonoBehaviour
 
     [Header("Particle Effects")]
     [SerializeField] private ParticleSystem explosionEffect;
+    [SerializeField] private ParticleSystem destroyedEffect;
 
     // Private
     private float timerToFail = 0f;
@@ -272,6 +273,10 @@ public class TerminalController : MonoBehaviour
             Invoke("StopExplosion", 1f);
             CameraShaker.Instance.ShakeOnce(CameraShakePresets.Explosion.Magnitude, CameraShakePresets.Explosion.Roughness, cameraShakeFadeIn, cameraShakeFadeOut);
         }
+
+        // Destroyed Particle Effect:
+        if (state == TerminalState.Destroyed) destroyedEffect.Play();
+        else if (previousState == TerminalState.Repairing && state != TerminalState.Destroyed) destroyedEffect.Stop();
 
         // Play sounds:
         switch (state)
